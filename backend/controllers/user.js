@@ -1,14 +1,14 @@
+const { generateToken } = require("../helpers/tokens");
 const { validateEmail, validateLength } = require("../helpers/validation");
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
-
+const jwt = require('jsonwebtoken')
 exports.register = async (req, res) => {
   try {
     const {
       first_name,
       last_name,
       email,
-      username,
       password,
       bYear,
       bMonth,
@@ -48,21 +48,24 @@ exports.register = async (req, res) => {
     }
 
     const hashPassword = await bcrypt.hash(password, 12);
-
+    const username = first_name + " " + last_name
+    console.log(password)
     const user = await new User({
       first_name,
       last_name,
       email,
       username,
-      password,
+      password: hashPassword,
       bYear,
       bMonth,
       bDay,
       gender,
     }).save();
+    const test = generateToken({email},"30m")
 
     res.status(200).json(user);
   } catch (error) {
+    console.log(error)
     res.json({ message: error });
   }
 };
