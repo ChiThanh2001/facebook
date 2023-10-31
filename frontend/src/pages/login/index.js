@@ -3,7 +3,7 @@ import { Formik, Form } from "formik";
 import { Link } from "react-router-dom";
 import LoginInput from "../../components/inputs/loginInput";
 import { useState } from "react";
-
+import * as Yup from "yup";
 const loginInfos = {
   email: "",
   password: "",
@@ -15,8 +15,13 @@ export const Login = () => {
   console.log(login);
   const handleLoginChange = (e) => {
     const { name, value } = e.target;
+    console.log(value)
     setLogin({ ...login, [name]: value });
   };
+
+  const loginValidation = Yup.object({
+    email: Yup.string().required("Email address is required."),
+  });
 
   return (
     <div className="login">
@@ -30,7 +35,11 @@ export const Login = () => {
           </div>
           <div className="login_2">
             <div className="login_2_wrap">
-              <Formik enableReinitialize initialValues={(email, password)}>
+              <Formik
+                enableReinitialize
+                initialValues={{email, password}}
+                validationSchema={loginValidation}
+              >
                 {(formik) => (
                   <Form>
                     <LoginInput
