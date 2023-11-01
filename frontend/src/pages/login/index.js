@@ -21,6 +21,7 @@ export const Login = () => {
 
   const loginValidation = Yup.object({
     email: Yup.string().required("Email address is required."),
+    password: Yup.string().required("Password is required")
   });
 
   return (
@@ -53,6 +54,7 @@ export const Login = () => {
                       name="password"
                       placeholder="Password"
                       onChange={handleLoginChange}
+                      bottom
                     />
                     <button type="submit" className="blue_btn">
                       Log In
