@@ -17,6 +17,10 @@
   margin-bottom: 10px;
   color: var(--color-primary);
 }
+
+.input_wrap input:focus{
+  border-color: var(--blue-color);
+}
 .input_error {
   border: 1px solid red;
 }
@@ -56,4 +60,30 @@
   border-left: 10px solid transparent;
   position: absolute;
   top: -10px;
+}
+
+.input_error_desktop{
+  position: absolute;
+  width:300px;
+  right:370px;
+  bottom:0
+}
+
+.error_arrow_bottom_desktop{
+  position: absolute;
+  right:-20px;
+  top:35%;
+  border-bottom: 10px solid transparent;
+  border-top: 10px solid transparent;
+  border-left: 10px solid #b94a48;
+}
+
+.error_arrow_top_desktop{
+  position: absolute;
+  right:-20px;
+  top:35%;
+  border-bottom: 10px solid transparent;
+  border-top: 10px solid transparent;
+  border-left: 10px solid #b94a48;
+  bottom:10px
 }
