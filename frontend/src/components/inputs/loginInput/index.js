@@ -6,7 +6,7 @@ import { useMediaQuery } from 'react-responsive'
 const LoginInput = ({ placeholder, bottom,  ...props }) => {
   const [field, meta] = useField(props);
   const desktopView = useMediaQuery({
-    query: "(min-width: 975px)"
+    query: "(min-width: 850px)"
   })  
   console.log('ga',desktopView)
   return (
