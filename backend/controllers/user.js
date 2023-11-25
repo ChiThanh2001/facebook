@@ -106,26 +106,38 @@ exports.activateAccount = async (req, res) => {
 };
 
 exports.login = async (req, res) => {
-  const { email, password } = req.body;
-  const userIsExist = await User.findOne({ email });
-  if (!userIsExist) {
-    return res.status(400).json({
-      message: "This account is not exist",
+  try {
+    const { email, password } = req.body;
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(400).json({
+        message: "This account is not exist",
+      });
+    }
+  
+    const checkPassword = await bcrypt.compare(password, user.password);
+    if (!checkPassword) {
+      return res.status(400).json({
+        message: "The credential you provided is wrong",
+      });
+    }
+    if (!user.verified) {
+      return res.status(400).json({
+        message: "This account is not activate yet!",
+      });
+    }
+    const token = generateToken({id: user._id.toString()}, '7d')
+    return res.send({
+      id: user._id,
+      username:user.username,
+      picture:user.picture,
+      first_name:user.first_name,
+      last_name:user.last_name,
+      token,
+      verified:user.verified,
+      message:"Login successfully"
     });
+  } catch (error) {
+    console.log(error)
   }
-
-  const checkPassword = await bcrypt.compare(password, userIsExist.password);
-  if (!checkPassword) {
-    return res.status(400).json({
-      message: "The credential you provided is wrong",
-    });
-  }
-  if (!userIsExist.verified) {
-    return res.status(400).json({
-      message: "This account is not activate yet!",
-    });
-  }
-  return res.json({
-    message: "Login successfully",
-  });
 };
