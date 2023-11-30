@@ -59,19 +59,29 @@ a {
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
   background: rgba(255, 255, 255, 0.768);
+  bottom: 0;
   z-index: 99;
 }
 
+/*----Buttons----*/
+
 /*-----Hovers-----*/
-.hover1:hover{
-  background-color: var(--bg-secondary);
+.hover1:hover {
+  background: var(--bg-primary);
 }
-.hover2:hover{
-  background-color: var(--bg-third);
+.hover2:hover {
+  background: var(--bg-third);
+}
+.hover3:hover {
+  background: #d4d6da3a;
 }
 /*-----Hovers-----*/
+.card {
+  height: 500px;
+  width: 500px;
+  background: red;
+}
 
 /*----Scrollbar----*/
 
@@ -98,3 +108,4 @@ a {
   cursor: pointer;
 }
 /*---Circles------*/
+  
