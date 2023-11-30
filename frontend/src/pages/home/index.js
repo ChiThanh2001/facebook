@@ -1,11 +1,22 @@
-import React, { useRef, useState } from 'react'
-import Header from '../../components/header'
-import useClickOutSide from '../../helpers/clickOutside'
-
-export const Home = () => {
+import { useRef, useState } from "react";
+import { useSelector } from "react-redux";
+import Header from "../../components/header";
+import LeftHome from "../../components/home/left";
+import RightHome from "../../components/home/right";
+import Stories from "../../components/home/stories";
+import "./style.css";
+import CreatePost from "../../components/createPost";
+export default function Home() {
+  const { user } = useSelector((user) => ({ ...user }));
   return (
-    <div>
-      <Header/>
+    <div className="home">
+      <Header />
+      <LeftHome user={user} />
+      <div className="home_middle">
+        <Stories />
+        <CreatePost user={user} />
+      </div>
+      <RightHome user={user} />
     </div>
-  )
+  );
 }
