@@ -62,6 +62,7 @@ exports.register = async (req, res) => {
       bMonth,
       bDay,
       gender,
+      picture:'../../images/default_pic.png'
     }).save();
 
     const emailVerificationToken = generateToken(

@@ -5,6 +5,7 @@ import Home from "./pages/home";
 import LoggedInRoutes from "./routes/LoggedInRoutes";
 import NotLoggedInRoutes from "./routes/NotLoggedInRoutes";
 import Activate from "./pages/home/activate";
+import Reset from "./pages/reset";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" element={<Home />} />
         </Route>
         <Route path='/activate/:token' element={<Activate />}/>
+        <Route path='/reset' element={<Reset />}/>
       </Routes>
     </div>
   );

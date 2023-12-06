@@ -44,10 +44,9 @@ export default function Activate() {
         console.log(error)
         setError(true)
         setActivateInfo({message: error.response.data.message})
-        console.log('gag123a',activateInfo)
     }
   }
-  console.log('gagagaga',activateInfo.message) 
+
   return (
     <div className="home">
       {
