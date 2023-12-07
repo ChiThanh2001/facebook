@@ -103,6 +103,9 @@ exports.activateAccount = async (req, res) => {
       await User.findByIdAndUpdate(userDecode.id, { verified: true });
       res.status(200).json({
         message: "Activate account successfully",
+        picture: userIsExist.picture,
+        first_name: userIsExist.first_name,
+        last_name: userIsExist.last_name
       });
     }
   } catch (error) {

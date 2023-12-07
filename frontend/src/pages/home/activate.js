@@ -7,11 +7,12 @@ import Stories from "../../components/home/stories";
 import "./style.css";
 import CreatePost from "../../components/createPost";
 import ActivateForm from "../../components/home/activate/ActivateForm";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from 'axios'
 import Cookies from "js-cookie";
 export default function Activate() {
   const { user } = useSelector((user) => ({ ...user }));
+  console.log('reduxxx',user)
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const[error, setError] = useState()
@@ -32,8 +33,8 @@ export default function Activate() {
             }
         })
     
-        Cookies.set('user',JSON.stringify({...user, verified: true}))
-        dispatch({type:'VERIFY',payload :true})
+        dispatch({type:'VERIFY',payload :{verified: true, picture: data.picture, first_name:data.first_name, last_name: data.last_name}})
+        Cookies.set('user',JSON.stringify({verified : true, picture: data.picture, first_name:data.first_name, last_name: data.last_name}))
         setSuccess(true)
         setActivateInfo({message: data.message})
 
