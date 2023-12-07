@@ -14,13 +14,13 @@ export default function SearchAccount({ email, setEmail, error, setError, setLoa
 
   const handleSearch = async ()=>{
     try {
+      setLoading(true)
       const { data } = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/findUser`,{email})
       setUserInfos(data)
       setVisible(1)
       setError('')
-      console.log('ga')
+      setLoading(false)
     } catch (error) {
-      console.log(error)
       setLoading(false)
       setError(error.response.data.message)
     }

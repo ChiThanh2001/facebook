@@ -21,6 +21,7 @@ export default function Reset() {
   const [password, setPassword] = useState("");
   const [conf_password, setConf_password] = useState("");
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState('')
   const [userInfos, setUserInfos] = useState("")
 
   const logout = () => {
@@ -73,24 +74,34 @@ export default function Reset() {
             error={error} 
             setError={setError} 
             setLoading={setLoading}
-            setUserInfos={setUserInfos}
             setVisible={setVisible}
           />
         )}
         {visible === 2 && (
           <CodeVerification
+            userInfos={userInfos}
             user={user}
             code={code}
             setCode={setCode}
             error={error}
+            setError={setError} 
+            setLoading={setLoading}
+            setVisible={setVisible}
           />
         )}
         {visible === 3 && (
           <ChangePassword
+            userInfos={userInfos}
             password={password}
             conf_password={conf_password}
             setConf_password={setConf_password}
+            error={error}
             setPassword={setPassword}
+            setError={setError} 
+            setLoading={setLoading}
+            setVisible={setVisible}
+            setSuccess={setSuccess}
+            success={success}
           />
         )}
       </div>

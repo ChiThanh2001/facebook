@@ -193,3 +193,34 @@ exports.sendResetPasswordCode = async (req,res)=>{
     })
   }
 }
+
+exports.validateResetCode = async (req,res)=>{
+  try{
+    const { email, code } = req.body;
+    const user = await User.findOne({ email });
+    const dbCode = await Code.findOne({ user: user._id });
+    
+    if(dbCode.code !== code){
+      return res.status(400).json({
+        message: "Verification code is wrong!"
+      })
+    }
+    return res.status(200).json({
+      message: "Verification code is ok!"
+    })
+  } catch(error){
+    res.status(400).json({
+      message:error.message
+    })
+  }
+}
+
+exports.changePassword = async (req,res)=>{
+  const { email, password } = req.body;
+
+  const cryptedPassword = await bcrypt.hash(password, 12);
+  await User.findOneAndUpdate({ email }, { password: cryptedPassword});
+  return res.status(200).json({
+    message: 'Password was changed successfully!'
+  })
+}
