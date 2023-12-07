@@ -89,12 +89,6 @@ export default function RegisterForm({setVisible}) {
       })
       setError('')
       setSuccess(data.message)
-      const {message,...rest} = data
-      setTimeout(()=>{
-        dispatch({type:'LOGIN', payload:rest})
-        Cookies.set('user',JSON.stringify(rest))
-        navigate('/')
-      },2000)
     } catch (error) {
       console.log(error)
       setLoading(false)
