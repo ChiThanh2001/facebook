@@ -7,7 +7,7 @@ export default function ImagePreview({
   setText,
   images,
   setImages,
-  setShowPrev,
+  setShowPrev
 }) {
   const imageInputRef = useRef(null);
   const handleImages = (e) => {
@@ -20,6 +20,7 @@ export default function ImagePreview({
       };
     });
   };
+  
   return (
     <div className="overflow_a">
       <EmojiPickerBackgrounds text={text} user={user} setText={setText} type2 />

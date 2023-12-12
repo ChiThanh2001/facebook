@@ -7,7 +7,7 @@ import ImagePreview from "./ImagePreview";
 import useClickOutSide from "../../helpers/clickOutside";
 export default function CreatePostPopup({ user, setVisible }) {
   const [text, setText] = useState("");
-  const [showPrev, setShowPrev] = useState(true);
+  const [showPrev, setShowPrev] = useState(false);
   const [images, setImages] = useState([]);
   const popup = useRef(null)
   useClickOutSide(popup, ()=>{
