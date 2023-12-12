@@ -4,15 +4,65 @@ import Picker from "emoji-picker-react";
 import EmojiPickerBackgrounds from "./EmojiPickerBackgrounds";
 import AddToYourPost from "./AddToYourPost";
 import ImagePreview from "./ImagePreview";
+import PulseLoader from 'react-spinners/PulseLoader'
 import useClickOutSide from "../../helpers/clickOutside";
+import dataURItoBlob from "../../helpers/dataURItoBlob";
+import { createPost } from "../../function/post";
+import { uploadImages } from "../../function/uploadImages";
+
 export default function CreatePostPopup({ user, setVisible }) {
   const [text, setText] = useState("");
   const [showPrev, setShowPrev] = useState(false);
   const [images, setImages] = useState([]);
+  const [loading, setLoading] = useState(false)
   const popup = useRef(null)
+
   useClickOutSide(popup, ()=>{
     setVisible(false)
   })
+
+  const postSubmit = async ()=>{
+    if(images && images.length){
+      setLoading(true);
+      const postImages = images.map((img) => {
+        return dataURItoBlob(img);
+      });
+
+      const path = `${user.username}/post Images`;
+      let formData = new FormData();
+      formData.append("path", path);
+      postImages.forEach((image) => {
+        formData.append("file", image);
+      });
+
+      const response = await uploadImages(formData, path, user.token); 
+      await createPost(null, text, response, user.id, user.token);
+
+      setLoading(false);
+      setText("");
+      setImages("");
+      setVisible(false);
+    }
+    else if (text) {
+      setLoading(true);
+      const response = await createPost(
+        null,
+        text,
+        null,
+        user.id,
+        user.token
+      );
+      setLoading(false);
+      if (response === "ok") {
+        setText("");
+        setVisible(false);
+      }
+    }
+    else {
+      console.log("nothing");
+    }
+  }
+
   return (
     <div className="blur">
       <div className="postBox" ref={popup}>
@@ -57,7 +107,7 @@ export default function CreatePostPopup({ user, setVisible }) {
           />
         )}
         <AddToYourPost setShowPrev={setShowPrev}/>
-        <button className="post_submit">Post</button>
+        <button className="post_submit" onClick={postSubmit} disabled={loading}>{loading ? <PulseLoader color="#fff" size={5} /> : "Post"}</button>
       </div>
     </div>
   );
