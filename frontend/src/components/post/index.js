@@ -2,7 +2,11 @@ import { Link } from "react-router-dom";
 import "./style.css";
 import Moment from "react-moment";
 import { Dots, Public } from "../../svg";
+import ReactPopup from "./ReactPopup";
+import { useState } from "react";
 export default function Post({ post }) {
+  const [visible, setVisible] = useState(false)
+
   return (
     <div className="post">
       <div className="post_header">
@@ -40,14 +44,57 @@ export default function Post({ post }) {
       <div className="post_body">
         <div className="post_text">
           {post.text}
-          {console.log(post)}
         </div>
-        <div className="post_image">
-          {post.images?.map((image)=>{
-            return <img src={image.url} className="image1" alt=""/>
+        <div className={
+                post.images?.length === 1
+                  ? "grid_1"
+                  : post.images?.length === 2
+                  ? "grid_2"
+                  : post.images?.length === 3
+                  ? "grid_3"
+                  : post.images?.length === 4
+                  ? "grid_4"
+                  : post.images?.length >= 5 && "grid_5"
+              }
+          >
+          {post.images?.map((image, index)=>{
+            return <img src={image.url} className={`img-${index}`} alt=""/>
           })}                 
         </div>
       </div>
+      <div className="post_bottom">
+          <div className="post_info">
+            <div className="comment">10 comment</div>
+            <div className="share">1 share</div>
+          </div>
+          <div className="post_react">
+            {/* <ReactPopup visible={visible} setVisible={setVisible}/> */}
+            <div className="post_action" onMouseOver={()=>{
+              setTimeout(()=>{
+                setVisible(true)
+              },500)
+            }} onMouseLeave={()=>{
+              setTimeout(()=>{
+                setVisible(false)
+              },500)
+            }}>
+              <ReactPopup visible={visible} setVisible={setVisible}/>
+              <i className="like_icon"></i>
+              <span>Like</span>
+            </div>
+            <div className="post_action">
+              <i className="comment_icon"></i>
+              <span>Comment</span>
+            </div>
+            <div className="post_action">
+              <i className="share_icon"></i>
+              <span>Share</span>
+            </div>
+          </div>
+          <div className="post_comment">
+
+          </div>
+      </div> 
     </div>
   );
 }
