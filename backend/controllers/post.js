@@ -11,7 +11,7 @@ exports.createPost = async (req, res) => {
 
 exports.getAllPosts = async (req,res)=>{
   try {
-    const posts = await Post.find().populate('user','first_name last_name picture username gender').sort({ createdAt: "desc" })
+    const posts = await Post.find().populate('user','first_name last_name picture username gender text').sort({ createdAt: "desc" })
     console.log(posts)
     res.json(posts)
   } catch (error) {

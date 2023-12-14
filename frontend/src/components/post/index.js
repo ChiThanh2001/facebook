@@ -37,6 +37,17 @@ export default function Post({ post }) {
           <Dots color="#828387" />
         </div>
       </div>
+      <div className="post_body">
+        <div className="post_text">
+          {post.text}
+          {console.log(post)}
+        </div>
+        <div className="post_image">
+          {post.images?.map((image)=>{
+            return <img src={image.url} className="image1" alt=""/>
+          })}                 
+        </div>
+      </div>
     </div>
   );
 }
