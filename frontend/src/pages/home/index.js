@@ -6,7 +6,8 @@ import RightHome from "../../components/home/right";
 import Stories from "../../components/home/stories";
 import "./style.css";
 import CreatePost from "../../components/createPost";
-export default function Home({ setVisible }) {
+import Post from "../../components/post";
+export default function Home({ setVisible, posts }) {
   const { user } = useSelector((user) => ({ ...user }));
   return (
     <div className="home">
@@ -15,6 +16,11 @@ export default function Home({ setVisible }) {
       <div className="home_middle">
         <Stories />
         <CreatePost user={user} setVisible={setVisible}/>
+        <div className="posts">
+          {posts.map((post) => (
+            <Post key={post._id} post={post} />
+          ))}
+        </div>
       </div>
       <RightHome user={user} />
     </div>
