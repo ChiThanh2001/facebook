@@ -250,7 +250,9 @@
   justify-content: space-around;
   margin-top:5px;
   border-top: 1px solid var(--bg-secondary);
+  border-bottom: 1px solid var(--bg-secondary);
   padding-top:10px;
+
 }
 
 .post_react .post_action{
@@ -292,4 +294,66 @@
 
 .react:hover{
   scale: calc(1.3);
+}
+
+.comment_box{
+  display: flex;
+  padding: 10px;
+}
+
+.img_user{
+  height: 79px;
+  width:50px;
+}
+
+.img_user img{
+  width:35px;
+  height:35px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.box_chat{
+  width:100%;
+  position: relative;
+  border-radius: 20px;
+  border: 1px solid var(--bg-secondary);
+}
+
+.box_chat textarea{
+  width: 100%;
+  min-height: 16px;
+  padding-left: 10px;
+  font-family: "Arial", sans-serif;
+  overflow-y: hidden;
+  resize: none;
+  border: none;
+  padding-top: 10px;
+  font-size: 16px;
+  margin-bottom: 40px;
+}
+
+.box_chat textarea:focus{
+  outline: none;
+}
+
+.list-icon{
+  position: absolute;
+  display: flex;
+  gap:16px;
+  width: 100%;
+  bottom:10px;
+  left:16px;
+}
+
+.send_button{
+  position:absolute;
+  top:60px;
+  right: 10px;
+}
+
+.emoji_picker{
+  position: absolute;
+  top: -330px;
+  right: 590px;
 }

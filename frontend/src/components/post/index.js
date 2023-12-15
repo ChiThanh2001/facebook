@@ -3,9 +3,32 @@ import "./style.css";
 import Moment from "react-moment";
 import { Dots, Public } from "../../svg";
 import ReactPopup from "./ReactPopup";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { IoMdSend } from "react-icons/io";
+import Picker  from "emoji-picker-react";
+
 export default function Post({ post }) {
   const [visible, setVisible] = useState(false)
+  const [visibleComment, setVisibleComment] = useState(false)
+  const [visibleEmoji, setVisibleEmoji] = useState(false)
+  const [cursorPosition, setCursorPosition] = useState();
+  const [text, setText] = useState('')
+  const textRef = useRef(null)
+  
+  // useEffect(() => {
+  //   textRef.current.selectionEnd = cursorPosition;
+  // }, [cursorPosition]);
+
+  const handleEmoji = (e, { emoji }) => {
+    const ref = textRef.current;
+    ref.focus();
+    const start = text.substring(0, ref.selectionStart);
+    const end = text.substring(ref.selectionStart);
+    console.log(textRef.current.selectionEnd)
+    const newText = start + emoji + end;
+    setText(newText);
+    setCursorPosition(start.length + emoji.length);
+  };
 
   return (
     <div className="post">
@@ -82,7 +105,7 @@ export default function Post({ post }) {
               <i className="like_icon"></i>
               <span>Like</span>
             </div>
-            <div className="post_action">
+            <div className="post_action" onClick={()=>setVisibleComment(prev => !prev)}>
               <i className="comment_icon"></i>
               <span>Comment</span>
             </div>
@@ -91,9 +114,36 @@ export default function Post({ post }) {
               <span>Share</span>
             </div>
           </div>
-          <div className="post_comment">
-
-          </div>
+          {visibleComment && (<div className="post_comment">
+            <div className="comment_box">
+              <div className="img_user">
+                <img src={post?.user?.picture} />
+              </div>
+              <div className="box_chat">
+                <textarea type="text" className="input_chat" placeholder="What are you thinking..." ref={textRef} value={text} onChange={(e) => setText(e.target.value)}/>
+                <div className="list-icon">
+                  <div className="comment-circle-icon">
+                    <i className="emoji_icon" onClick={()=>setVisibleEmoji(prev => !prev)}></i>
+                    <div className="emoji_picker">
+                      {visibleEmoji && <Picker onEmojiClick={handleEmoji}/>}
+                    </div>
+                  </div>       
+                  <div className="comment-circle-icon">
+                    <i className="camera_icon"></i>
+                  </div>    
+                  <div className="comment-circle-icon">
+                    <i className="gif_icon"></i>
+                  </div>    
+                  <div className="comment-circle-icon">
+                    <i className="sticker_icon"></i>
+                  </div>        
+                </div>
+                <div className="send_button">
+                  <IoMdSend color="#1876f2" fontSize="1.5em"/>
+                </div>
+              </div>
+            </div>
+          </div>)}
       </div> 
     </div>
   );
