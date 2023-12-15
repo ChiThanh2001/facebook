@@ -6,6 +6,10 @@ import ReactPopup from "./ReactPopup";
 import { useEffect, useRef, useState } from "react";
 import { IoMdSend } from "react-icons/io";
 import Picker  from "emoji-picker-react";
+import PostMenu from "./PostMenu";
+import { useSelector } from "react-redux";
+import { comment, getCommentsBelongToPost } from '../../function/post'
+import Comment from "./Comment";
 
 export default function Post({ post }) {
   const [visible, setVisible] = useState(false)
@@ -13,11 +17,18 @@ export default function Post({ post }) {
   const [visibleEmoji, setVisibleEmoji] = useState(false)
   const [cursorPosition, setCursorPosition] = useState();
   const [text, setText] = useState('')
+  const [showMenu, setShowMenu] = useState(false)
+  const [comments, setComments] = useState(post?.comments)
   const textRef = useRef(null)
-  
+
+  const { user } = useSelector(state=> ({...state}))
   // useEffect(() => {
   //   textRef.current.selectionEnd = cursorPosition;
   // }, [cursorPosition]);
+
+  useEffect(() => {
+    setComments(post?.comments);
+  }, [post]);
 
   const handleEmoji = (e, { emoji }) => {
     const ref = textRef.current;
@@ -29,6 +40,13 @@ export default function Post({ post }) {
     setText(newText);
     setCursorPosition(start.length + emoji.length);
   };
+
+  const handleComment = async (e)=>{
+    if(e.key === "Enter"){
+      const data = await comment(post._id, text, user.token)
+      setComments(data)
+    }
+  }
 
   return (
     <div className="post">
@@ -60,7 +78,7 @@ export default function Post({ post }) {
             </div>
           </div>
         </Link>
-        <div className="post_header_right hover1">
+        <div className="post_header_right hover1" onClick={()=>setShowMenu(prev => !prev)}>
           <Dots color="#828387" />
         </div>
       </div>
@@ -105,7 +123,9 @@ export default function Post({ post }) {
               <i className="like_icon"></i>
               <span>Like</span>
             </div>
-            <div className="post_action" onClick={()=>setVisibleComment(prev => !prev)}>
+            <div className="post_action" onClick={()=>{
+                setVisibleComment(prev => !prev)
+              }}>
               <i className="comment_icon"></i>
               <span>Comment</span>
             </div>
@@ -120,7 +140,7 @@ export default function Post({ post }) {
                 <img src={post?.user?.picture} />
               </div>
               <div className="box_chat">
-                <textarea type="text" className="input_chat" placeholder="What are you thinking..." ref={textRef} value={text} onChange={(e) => setText(e.target.value)}/>
+                <textarea onKeyUp={handleComment} type="text" className="input_chat" placeholder="What are you thinking..." ref={textRef} value={text} onChange={(e) => setText(e.target.value)}/>
                 <div className="list-icon">
                   <div className="comment-circle-icon">
                     <i className="emoji_icon" onClick={()=>setVisibleEmoji(prev => !prev)}></i>
@@ -144,7 +164,9 @@ export default function Post({ post }) {
               </div>
             </div>
           </div>)}
-      </div> 
+      </div>
+      {comments && comments.slice(0,3).map((comment,i)=> <Comment comment={comment} key={i} />)} 
+      {showMenu && <PostMenu userId={user.id} postUserId={post.user._id} imagesLength={post?.images?.length} setShowMenu={setShowMenu}/>}
     </div>
   );
 }

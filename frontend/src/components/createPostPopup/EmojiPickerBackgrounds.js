@@ -5,7 +5,7 @@ export default function EmojiPickerBackgrounds({ text, user, setText, type2 }) {
   const [picker, setPicker] = useState(false);
   const [cursorPosition, setCursorPosition] = useState();
   const textRef = useRef(null);
-
+  
   useEffect(() => {
     textRef.current.selectionEnd = cursorPosition;
   }, [cursorPosition]);
