@@ -269,6 +269,7 @@
   gap:10px;
   justify-content: center;
   position: relative;
+  cursor: pointer;
 }
 
 .post_action span{
@@ -445,3 +446,11 @@
   font-weight: 500;
   margin-bottom: 5px;
 }
+
+.react_icon{
+  width: 18px;
+  position: absolute;
+  left: 9px;
+  top:1px
+}
+

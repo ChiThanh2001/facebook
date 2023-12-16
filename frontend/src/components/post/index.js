@@ -8,7 +8,7 @@ import { IoMdSend } from "react-icons/io";
 import Picker  from "emoji-picker-react";
 import PostMenu from "./PostMenu";
 import { useSelector } from "react-redux";
-import { comment, getCommentsBelongToPost } from '../../function/post'
+import { comment, getCommentsBelongToPost, getReacts } from '../../function/post'
 import Comment from "./Comment";
 
 export default function Post({ post }) {
@@ -19,6 +19,8 @@ export default function Post({ post }) {
   const [text, setText] = useState('')
   const [showMenu, setShowMenu] = useState(false)
   const [comments, setComments] = useState(post?.comments)
+  const [react, setReact] = useState()
+  const [check, setCheck] = useState()
   const textRef = useRef(null)
 
   const { user } = useSelector(state=> ({...state}))
@@ -26,16 +28,25 @@ export default function Post({ post }) {
   //   textRef.current.selectionEnd = cursorPosition;
   // }, [cursorPosition]);
 
+  useEffect(()=>{
+    getPostReacts()
+  },[])
+
   useEffect(() => {
     setComments(post?.comments);
   }, [post]);
+
+  const getPostReacts = async ()=>{
+    const res = await getReacts(post._id, user.token)
+    setReact(res.reacts)
+    setCheck(res.check)
+  }
 
   const handleEmoji = (e, { emoji }) => {
     const ref = textRef.current;
     ref.focus();
     const start = text.substring(0, ref.selectionStart);
     const end = text.substring(ref.selectionStart);
-    console.log(textRef.current.selectionEnd)
     const newText = start + emoji + end;
     setText(newText);
     setCursorPosition(start.length + emoji.length);
@@ -120,9 +131,9 @@ export default function Post({ post }) {
                 setVisible(false)
               },500)
             }}>
-              <ReactPopup visible={visible} setVisible={setVisible}/>
-              <i className="like_icon"></i>
-              <span>Like</span>
+              <ReactPopup visible={visible} setVisible={setVisible} postId={post._id} user={user} check={check} setCheck={setCheck} />
+              {check ? <img src={`../../../reacts/${check}.svg`} alt='' className="react_icon"/>:<i className="like_icon"></i>}
+              {check ? <span>{check}</span> :<span>Like</span>}
             </div>
             <div className="post_action" onClick={()=>{
                 setVisibleComment(prev => !prev)

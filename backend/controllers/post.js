@@ -45,7 +45,6 @@ exports.comment = async (req, res) => {
 exports.getCommentByPost = async (req,res)=>{
   try {
     const { postId } = req.params
-    console.log(postId)
     const commentOfPost = await Post.findById(postId).populate("comments.commentBy", "picture first_name last_name username");
     if(!commentOfPost){
       return res.status(400).json({ message:'This postId is incorrect' });

@@ -1,3 +1,5 @@
+import { reactPost } from "../../function/post";
+
 const reactsArray = [
   {
     name: "like",
@@ -24,7 +26,16 @@ const reactsArray = [
     image: "../../../reacts/angry.gif",
   },
 ];
-export default function ReactPopup({ visible, setVisible }) {
+export default function ReactPopup({ visible, setVisible, postId, user, check, setCheck }) {
+  const reactHandle = async (react)=>{
+    reactPost(postId, react, user.token)
+    if(check === react){
+      setCheck();
+    }else{
+      setCheck(react)
+    }
+  }
+
   return (
     <>
       {visible && (
@@ -42,7 +53,7 @@ export default function ReactPopup({ visible, setVisible }) {
           }}
         >
           {reactsArray.map((react, i) => (
-            <div className="react" key={i}>
+            <div className="react" key={i} onClick={()=>reactHandle(react.name)}>
               <img src={react.image} alt="" />
             </div>
           ))}
