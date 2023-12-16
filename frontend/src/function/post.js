@@ -99,3 +99,17 @@ export const totalComment = async (postId, token)=>{
       return error.response.data.message
   }
 }
+
+export const getTotalReact = async (postId, token)=>{
+  try {
+    const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getTotalReactOfPost/${postId}`, {
+        headers:{
+            Authorization: `Bearer ${token}`
+        }
+    })
+
+    return data
+  } catch (error) {
+      return error.response.data.message
+  }
+}

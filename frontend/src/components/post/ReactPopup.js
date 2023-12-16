@@ -28,7 +28,7 @@ const reactsArray = [
 ];
 export default function ReactPopup({ visible, setVisible, postId, user, check, setCheck }) {
   const reactHandle = async (react)=>{
-    reactPost(postId, react, user.token)
+    await reactPost(postId, react, user.token)
     if(check === react){
       setCheck();
     }else{

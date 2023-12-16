@@ -42,6 +42,16 @@ exports.getReacts = async (req, res)=>{
             check: check?.react
         })
     } catch (error) {
-        
+        return res.status(400).json({ message: error.message })
+    }
+}
+
+exports.getTotalReactOfPost = async (req, res)=>{
+    try {
+        const { postId } = req.params
+       const totalReact = await React.find({ postRef: postId})
+       return res.status(200).json({totalReact})
+    } catch (error) {
+        return res.status(400).json({ message: error.message })
     }
 }

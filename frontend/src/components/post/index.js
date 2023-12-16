@@ -8,7 +8,7 @@ import { IoMdSend } from "react-icons/io";
 import Picker  from "emoji-picker-react";
 import PostMenu from "./PostMenu";
 import { useSelector } from "react-redux";
-import { comment, getCommentsBelongToPost, getReacts, totalComment } from '../../function/post'
+import { comment, getCommentsBelongToPost, getReacts, totalComment, getTotalReact } from '../../function/post'
 import Comment from "./Comment";
 
 export default function Post({ post }) {
@@ -22,6 +22,7 @@ export default function Post({ post }) {
   const [react, setReact] = useState()
   const [check, setCheck] = useState()
   const [commentAmount, setCommentAmount] = useState(0)
+  const [reactInfo ,setReactInfo] = useState()
   const textRef = useRef(null)
 
   const { user } = useSelector(state=> ({...state}))
@@ -36,6 +37,11 @@ export default function Post({ post }) {
     setCheck(res.check)
   }
 
+  const getTotalPostReact = async ()=>{
+    const res = await getTotalReact(post._id, user.token)
+    setReactInfo(res.totalReact.length)
+  }
+
   useEffect(()=>{
     getPostReacts()
   },[])
@@ -46,7 +52,11 @@ export default function Post({ post }) {
 
   useEffect(()=>{
     getComment()
-  },[getComment])
+  },[comments])
+
+  useEffect(()=>{
+    getTotalPostReact()
+  },[check])
 
   const handleEmoji = (e, { emoji }) => {
     const ref = textRef.current;
@@ -123,6 +133,7 @@ export default function Post({ post }) {
       </div>
       <div className="post_bottom">
           <div className="post_info">
+            <div className="react_total">{reactInfo} react</div>
             <div className="comment">{commentAmount} comment</div>
             <div className="share">1 share</div>
           </div>
