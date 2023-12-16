@@ -54,3 +54,15 @@ exports.getCommentByPost = async (req,res)=>{
     return res.status(400).json({ message: error.message });
   }
 }
+
+exports.getPostComment = async (req,res)=>{
+  try {
+    const { postId } = req.params
+    const post = await Post.findById(postId)
+    const totalComment = post.comments.length
+    return res.status(200).json({ totalComment })
+  } catch (error) {
+    return res.status(400).json({ message: error.message });
+  }
+  
+}
