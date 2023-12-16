@@ -43,6 +43,7 @@ export default function Post({ post }) {
 
   const handleComment = async (e)=>{
     if(e.key === "Enter"){
+      setText('')
       const data = await comment(post._id, text, user.token)
       setComments(data)
     }

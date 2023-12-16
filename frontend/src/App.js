@@ -38,9 +38,11 @@ function App() {
     posts: [],
     error: "",
   });
+
   useEffect(() => {
     getAllPosts();
-  }, []);
+  }, [user]);
+
   const getAllPosts = async () => {
     try {
       dispatch({

@@ -9,6 +9,7 @@ import CreatePost from "../../components/createPost";
 import Post from "../../components/post";
 export default function Home({ setVisible, posts }) {
   const { user } = useSelector((user) => ({ ...user }));
+  
   return (
     <div className="home">
       <Header />
