@@ -10,7 +10,7 @@ import dataURItoBlob from "../../helpers/dataURItoBlob";
 import { createPost } from "../../function/post";
 import { uploadImages } from "../../function/uploadImages";
 
-export default function CreatePostPopup({ user, setVisible }) {
+export default function CreatePostPopup({ user, setVisible, setRefresh }) {
   const [text, setText] = useState("");
   const [showPrev, setShowPrev] = useState(false);
   const [images, setImages] = useState([]);
@@ -61,6 +61,7 @@ export default function CreatePostPopup({ user, setVisible }) {
     else {
       console.log("nothing");
     }
+    setRefresh(prev=>!prev)
   }
 
   return (

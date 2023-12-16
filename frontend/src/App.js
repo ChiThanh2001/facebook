@@ -32,16 +32,17 @@ function reducer(state, action) {
 
 function App() {
   const [visible, setVisible] = useState(false)
+  const [refresh, setRefresh] = useState(false)
   const { user } = useSelector(state=> ({...state}))
   const [{ loading, error, posts }, dispatch] = useReducer(reducer, {
     loading: false,
     posts: [],
     error: "",
   });
-
+  
   useEffect(() => {
     getAllPosts();
-  }, [user]);
+  }, [user, refresh]);
 
   const getAllPosts = async () => {
     try {
@@ -70,7 +71,7 @@ function App() {
 
   return (
     <div>
-      {visible && <CreatePostPopup user={user} setVisible={setVisible} />}
+      {visible && <CreatePostPopup user={user} setVisible={setVisible} setRefresh={setRefresh}/>}
       <Routes>
         <Route element={<NotLoggedInRoutes />}>
           <Route path="/login" element={<Login />} />
