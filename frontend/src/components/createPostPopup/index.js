@@ -28,7 +28,7 @@ export default function CreatePostPopup({ user, setVisible, setRefresh }) {
         return dataURItoBlob(img);
       });
 
-      const path = `${user.username}/post Images`;
+      const path = `${user.username}/post_images`;
       let formData = new FormData();
       formData.append("path", path);
       postImages.forEach((image) => {

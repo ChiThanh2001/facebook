@@ -52,7 +52,7 @@ exports.register = async (req, res) => {
     }
 
     const hashPassword = await bcrypt.hash(password, 12);
-    const username = first_name + " " + last_name;
+    const username = first_name + last_name;
 
     const user = await new User({
       first_name,
@@ -223,4 +223,16 @@ exports.changePassword = async (req,res)=>{
   return res.status(200).json({
     message: 'Password was changed successfully!'
   })
+}
+
+exports.getProfile = async (req,res)=>{
+  try{
+    const { username } = req.params
+    const profile = await User.find({ username }).select("-password")
+    return res.status(200).json({profile})
+  }catch(error){
+    res.status(400).json({
+      message:error.message
+    })
+  }
 }
