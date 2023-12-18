@@ -78,7 +78,7 @@ function App() {
         </Route>
         <Route element = {<LoggedInRoutes />}>
           <Route path="/profile" element={<Profile />} />
-          <Route path="/" element={<Home setVisible={setVisible} posts={posts}/>} />
+          <Route path="/" element={<Home setVisible={setVisible} posts={posts} setRefresh={setRefresh}/>} />
         </Route>
         <Route path='/activate/:token' element={<Activate />}/>
         <Route path='/reset' element={<Reset />}/>

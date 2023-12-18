@@ -1,11 +1,18 @@
 import React, { useRef, useState } from 'react'
 import MenuItem from './MenuItem'
 import useClickOutSide from "../../helpers/clickOutside";
+import { deletPost } from '../../function/post';
 
-const PostMenu = ({userId, postUserId, imagesLength, setShowMenu}) => {
+const PostMenu = ({userId, postUserId, imagesLength, setShowMenu, postId, userToken, setRefresh }) => {
+    console.log(postId, userToken)
     const [myPost, setMyPost] = useState(userId === postUserId)
     const menu = useRef(null)
     useClickOutSide(menu, ()=>setShowMenu(false))
+    
+    const removePost = async () => {
+        const data = await deletPost(postId, userToken);
+        setRefresh(prev => !prev)
+    };
 
     return (
         <ul className="post_menu" ref={menu}>
@@ -29,6 +36,7 @@ const PostMenu = ({userId, postUserId, imagesLength, setShowMenu}) => {
                 icon="trash_icon"
                 title="Move to trash"
                 subtitle="items in your trash are deleted after 30 days"
+                removePost={removePost}
                 />
             )}
             {!myPost && <div className="line"></div>}

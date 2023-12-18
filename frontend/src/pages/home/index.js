@@ -7,7 +7,7 @@ import Stories from "../../components/home/stories";
 import "./style.css";
 import CreatePost from "../../components/createPost";
 import Post from "../../components/post";
-export default function Home({ setVisible, posts }) {
+export default function Home({ setVisible, posts, setRefresh }) {
   const { user } = useSelector((user) => ({ ...user }));
   
   return (
@@ -19,7 +19,7 @@ export default function Home({ setVisible, posts }) {
         <CreatePost user={user} setVisible={setVisible}/>
         <div className="posts">
           {posts.map((post) => (
-            <Post key={post._id} post={post} />
+            <Post key={post._id} post={post} setRefresh={setRefresh}/>
           ))}
         </div>
       </div>

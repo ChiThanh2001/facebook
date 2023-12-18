@@ -64,5 +64,14 @@ exports.getPostComment = async (req,res)=>{
   } catch (error) {
     return res.status(400).json({ message: error.message });
   }
-  
+}
+
+exports.deletePost = async (req,res)=>{
+  try {
+    const { postId } = req.params
+    const post = await Post.findOneAndDelete({_id: postId})
+    return res.status(200).json(post)
+  } catch (error) {
+    return res.status(400).json({ message: error.message });
+  }
 }

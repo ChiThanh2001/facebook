@@ -11,7 +11,7 @@ import { useSelector } from "react-redux";
 import { comment, getCommentsBelongToPost, getReacts, totalComment, getTotalReact } from '../../function/post'
 import Comment from "./Comment";
 
-export default function Post({ post }) {
+export default function Post({ post, setRefresh }) {
   const [visible, setVisible] = useState(false)
   const [visibleComment, setVisibleComment] = useState(false)
   const [visibleEmoji, setVisibleEmoji] = useState(false)
@@ -195,7 +195,7 @@ export default function Post({ post }) {
           </div>)}
       </div>
       {comments && comments.slice(0,3).map((comment,i)=> <Comment comment={comment} key={i} />)} 
-      {showMenu && <PostMenu userId={user.id} postUserId={post.user._id} imagesLength={post?.images?.length} setShowMenu={setShowMenu}/>}
+      {showMenu && <PostMenu userId={user.id} postUserId={post.user._id} imagesLength={post?.images?.length} postId={post._id} userToken = {user.token} setShowMenu={setShowMenu} setRefresh={setRefresh} />}
     </div>
   );
 }
