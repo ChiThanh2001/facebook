@@ -72,6 +72,7 @@ exports.deletePost = async (req,res)=>{
     const post = await Post.findOneAndDelete({_id: postId})
     return res.status(200).json(post)
   } catch (error) {
+    console.log(error.message)
     return res.status(400).json({ message: error.message });
   }
 }
