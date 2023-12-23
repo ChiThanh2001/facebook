@@ -6,6 +6,9 @@
   width: 100%;
   cursor: pointer;
 }
+.fix_margin{
+  margin-top: 0;
+}
 .createPost_header {
   display: flex;
   align-items: center;

@@ -88,40 +88,6 @@ const userSchema = mongoose.Schema(
         },
       },
     ],
-    details: {
-      bio: {
-        type: String,
-      },
-      otherName: {
-        type: String,
-      },
-
-      job: {
-        type: String,
-      },
-      workplace: {
-        type: String,
-      },
-      highschool: {
-        type: String,
-      },
-      college: {
-        type: String,
-      },
-      currentcity: {
-        type: String,
-      },
-      hometown: {
-        type: String,
-      },
-      relationship: {
-        type: String,
-        enum: ["Single", "In a relationship", "Married", "Divorced"],
-      },
-      instagram: {
-        type: String,
-      },
-    },
     savedPosts: [
       {
         post: {

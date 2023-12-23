@@ -10,8 +10,13 @@ import ProfielPictureInfos from "./ProfielPictureInfos";
 import ProfileMenu from "./ProfileMenu";
 import ProfileLeft from "./ProfileLeft";
 import ProfileRight from "./ProfileRight";
+import CreatePostPopup from "../../components/createPostPopup";
+import { useState } from "react";
 
 export default function Profile() {
+  const [visible, setVisible] = useState(false)
+  const [refresh, setRefresh] = useState(false)
+  
   const { username } = useParams();
   const navigate = useNavigate();
   const { user } = useSelector((state) => ({ ...state }));
@@ -64,12 +69,13 @@ export default function Profile() {
             <ProfileMenu />
           </div>
         </div>
-        <div class="profile_body">
+        <div className="profile_body">
+          {visible && <CreatePostPopup user={user} setVisible={setVisible} setRefresh={setRefresh}/>}
           <div className="body_left">
             <ProfileLeft />
           </div>
           <div className="body_right">
-            <ProfileRight />
+            <ProfileRight setVisible={setVisible}/>
           </div>
         </div>
       </div>

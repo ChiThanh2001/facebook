@@ -188,3 +188,82 @@
     padding-bottom: 10px;
   }
 }
+
+.profile_body{
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  column-gap: 20px;
+  margin-top: 16px;
+}
+
+.introduce{
+  border: 1px solid var(--bg-secondary);
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 1px 10px var(--shadow-1);
+  margin-bottom: 50px;
+}
+
+.introduce_title{
+  font-family: sans-serif;
+  font-weight: 900;
+  font-size: large;
+}
+
+.detail{
+  margin-top: 5px;
+  text-align: center;
+}
+
+.button_edit button{
+  width: 100%;
+  border-radius: 10px;
+  height:36px;
+  background: var(--bg-secondary);
+  border:none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.info_profile{
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.married{
+  transform: translateY(-3px);
+}
+
+.img_post{
+  width:40px;
+  height:40px
+}
+
+.post_user{
+  border: 1px solid var(--bg-secondary);
+  border-radius: 10px;
+  padding:10px
+}
+
+.img_post img{
+  width: 100%;
+  border-radius: 50%;
+}
+
+.first{
+  display: flex;
+  gap:10px
+}
+
+.box_post{
+  width: 100%;
+  height:36px;
+  width:100%;
+  outline: none;
+  background: var(--bg-forth);
+  border-radius: 20px;
+  padding-left: 15px;
+  padding-top:6px;
+  cursor: pointer;
+}

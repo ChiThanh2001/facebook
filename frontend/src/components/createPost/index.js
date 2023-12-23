@@ -1,9 +1,9 @@
 import { Feeling, LiveVideo, Photo } from "../../svg";
 import UserMenu from "../header/userMenu";
 import "./style.css";
-export default function CreatePost({ user, setVisible }) {
+export default function CreatePost({ user, setVisible, margin }) {
   return (
-    <div className="createPost">
+    <div className={`createPost ${margin ? 'fix_margin' : ''}`}>
       <div className="createPost_header">
         <img src={user?.picture} alt="error" />
         <div className="open_post hover2" onClick={ ()=> setVisible(true) }>
