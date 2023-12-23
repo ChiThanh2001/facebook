@@ -12,7 +12,7 @@ export default function Home({ setVisible, posts, setRefresh }) {
   
   return (
     <div className="home">
-      <Header />
+      <Header page="home" />
       <LeftHome user={user} />
       <div className="home_middle">
         <Stories />

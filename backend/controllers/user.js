@@ -228,8 +228,11 @@ exports.changePassword = async (req,res)=>{
 exports.getProfile = async (req,res)=>{
   try{
     const { username } = req.params
-    const profile = await User.find({ username }).select("-password")
-    return res.status(200).json({profile})
+    const profile = await User.findOne({ username }).select("-password")
+    if(!profile){
+      return res.status(200).json({ ok: false })
+    }
+    return res.status(200).json(profile)
   }catch(error){
     res.status(400).json({
       message:error.message
