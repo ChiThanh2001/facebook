@@ -20,6 +20,7 @@ import { useRef, useState } from "react";
 import AllMenu from "./AllMenu";
 import useClickOutside from "../../helpers/clickOutside";
 import UserMenu from "./userMenu";
+
 export default function Header({ page }) {
   const { user } = useSelector((user) => ({ ...user }));
   const color = "#65676b";
@@ -60,7 +61,7 @@ export default function Header({ page }) {
         <SearchMenu color={color} setShowSearchMenu={setShowSearchMenu} />
       )}
       <div className="header_middle">
-        <Link to="/" className={`middle_icon ${page === "home" ? "active" : ""}`}>
+        <Link to="/" className={`middle_icon ${page === "home" ? "active" : "hover1"}`}>
           {page === "home" ? <HomeActive /> : <Home color={color}/>}
         </Link>
         <Link to="/" className="middle_icon hover1">

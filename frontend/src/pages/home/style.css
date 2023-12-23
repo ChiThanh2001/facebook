@@ -8,3 +8,6 @@
   margin-top: 75px;
   margin-left: 31.8vw;
 }
+.hover1:hover{
+  background: var(--bg-primary);
+}

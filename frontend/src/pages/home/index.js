@@ -7,6 +7,7 @@ import Stories from "../../components/home/stories";
 import "./style.css";
 import CreatePost from "../../components/createPost";
 import Post from "../../components/post";
+
 export default function Home({ setVisible, posts, setRefresh }) {
   const { user } = useSelector((user) => ({ ...user }));
   

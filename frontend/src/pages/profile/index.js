@@ -4,6 +4,12 @@ import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { profileReducer } from "../../function/reducers";
 import Header from "../../components/header";
+import Cover from "./Cover";
+import "./style.css"
+import ProfielPictureInfos from "./ProfielPictureInfos";
+import ProfileMenu from "./ProfileMenu";
+import ProfileLeft from "./ProfileLeft";
+import ProfileRight from "./ProfileRight";
 
 export default function Profile() {
   const { username } = useParams();
@@ -47,8 +53,26 @@ export default function Profile() {
       });
     }
   };
-  console.log(profile);
-  return <div>
-    <Header />
-  </div>;
+  return (
+    <div className="profile">
+      <Header page="profile" />
+      <div className="profile_container">
+        <div className="profile_top">
+          <div className="profile_container">
+            <Cover cover={profile.cover} />
+            <ProfielPictureInfos profile={profile}/>
+            <ProfileMenu />
+          </div>
+        </div>
+        <div class="profile_body">
+          <div className="body_left">
+            <ProfileLeft />
+          </div>
+          <div className="body_right">
+            <ProfileRight />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
