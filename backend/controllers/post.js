@@ -76,3 +76,14 @@ exports.deletePost = async (req,res)=>{
     return res.status(400).json({ message: error.message });
   }
 }
+
+exports.getUserPosts = async (req,res)=>{
+  try {
+    const { userId } = req.params
+    const post = await Post.find({user: userId}).populate('user','first_name last_name picture username gender text').populate("comments.commentBy", "first_name last_name picture username").sort({ createdAt: "desc" })
+    return res.status(200).json(post)
+  } catch (error) {
+    console.log(error.message)
+    return res.status(400).json({ message: error.message });
+  }
+}

@@ -127,3 +127,17 @@ export const deletPost = async (postId, token)=>{
       return error.response.data.message
   }
 }
+
+export const getUserPosts = async (userId, token)=>{
+  try {
+    const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/userposts/${userId}`, {
+        headers:{
+            Authorization: `Bearer ${token}`
+        }
+    })
+
+    return data
+  } catch (error) {
+      return error.response.data.message
+  }
+}

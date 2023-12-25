@@ -60,7 +60,7 @@ function App() {
         </Route>
         <Route element = {<LoggedInRoutes />}>
           <Route path="/profile" element={<Profile />} />
-          <Route path="/profile/:username" element={<Profile />} />
+          <Route path="/profile/:username" element={<Profile setRefresh={setRefresh} />} />
           <Route path="/" element={<Home setVisible={setVisible} posts={posts} setRefresh={setRefresh}/>} />
         </Route>
         <Route path='/activate/:token' element={<Activate />}/>

@@ -80,27 +80,27 @@ export default function Post({ post, setRefresh }) {
     <div className="post">
       <div className="post_header">
         <Link
-          to={`/profile/${post.user.username}`}
+          to={`/profile/${post?.user?.username}`}
           className="post_header_left"
         >
-          <img src={post.user.picture} alt="" />
+          <img src={post?.user?.picture} alt="" />
           <div className="header_col">
             <div className="post_profile_name">
-              {post.user.first_name} {post.user.last_name}
+              {post?.user?.first_name} {post?.user?.last_name}
               <div className="updated_p">
-                {post.type == "profilePicture" &&
+                {post?.type == "profilePicture" &&
                   `updated ${
-                    post.user.gender === "male" ? "his" : "her"
+                    post?.user?.gender === "male" ? "his" : "her"
                   } profile picture`}
-                {post.type == "cover" &&
+                {post?.type == "cover" &&
                   `updated ${
-                    post.user.gender === "male" ? "his" : "her"
+                    post?.user?.gender === "male" ? "his" : "her"
                   } cover picture`}
               </div>
             </div>
             <div className="post_profile_privacy_date">
               <Moment fromNow interval={30}>
-                {post.createdAt}
+                {post?.createdAt}
               </Moment>
               . <Public color="#828387" />
             </div>
@@ -112,21 +112,21 @@ export default function Post({ post, setRefresh }) {
       </div>
       <div className="post_body">
         <div className="post_text">
-          {post.text}
+          {post?.text}
         </div>
         <div className={
-                post.images?.length === 1
+                post?.images?.length === 1
                   ? "grid_1"
-                  : post.images?.length === 2
+                  : post?.images?.length === 2
                   ? "grid_2"
-                  : post.images?.length === 3
+                  : post?.images?.length === 3
                   ? "grid_3"
-                  : post.images?.length === 4
+                  : post?.images?.length === 4
                   ? "grid_4"
-                  : post.images?.length >= 5 && "grid_5"
+                  : post?.images?.length >= 5 && "grid_5"
               }
           >
-          {post.images?.map((image, index)=>{
+          {post?.images?.map((image, index)=>{
             return <img src={image.url} className={`img-${index}`} alt=""/>
           })}                 
         </div>
@@ -148,7 +148,7 @@ export default function Post({ post, setRefresh }) {
                 setVisible(false)
               },500)
             }}>
-              <ReactPopup visible={visible} setVisible={setVisible} postId={post._id} user={user} check={check} setCheck={setCheck} />
+              <ReactPopup visible={visible} setVisible={setVisible} postId={post?._id} user={user} check={check} setCheck={setCheck} />
               {check ? <img src={`../../../reacts/${check}.svg`} alt='' className="react_icon"/>:<i className="like_icon"></i>}
               {check ? <span>{check}</span> :<span>Like</span>}
             </div>
