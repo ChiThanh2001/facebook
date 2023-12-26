@@ -9,6 +9,7 @@ import Reset from "./pages/reset";
 import CreatePostPopup from "./components/createPostPopup";
 import { useSelector } from "react-redux";
 import { useEffect, useReducer, useState } from "react";
+import io from "socket.io-client";
 import axios from "axios";
 import { postsReducer } from "./function/reducers";
 
@@ -21,9 +22,16 @@ function App() {
     posts: [],
     error: "",
   });
+
+  const socket = io(process.env.REACT_APP_BACKEND_URL);
   
   useEffect(() => {
     getAllPosts();
+
+    // Clean up the socket connection when the component unmounts
+    return () => {
+      socket.disconnect();
+    };
   }, [user, refresh]);
 
   const getAllPosts = async () => {

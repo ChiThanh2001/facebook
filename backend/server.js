@@ -19,7 +19,12 @@ app.use(fileUpload({
 
 // Initialize HTTP server and Socket.IO
 const server = http.createServer(app);
-const io = socketIO(server);
+const io = socketIO(server,{
+  cors: {
+    origin: "http://localhost:3000", // Change this to the origin of your React app
+    methods: ["GET", "POST"],
+  },
+});
 
 //Load routes dynamically
 const routesPath = path.join(__dirname, "routes");
