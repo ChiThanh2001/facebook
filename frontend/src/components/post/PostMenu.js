@@ -4,7 +4,6 @@ import useClickOutSide from "../../helpers/clickOutside";
 import { deletPost } from '../../function/post';
 
 const PostMenu = ({userId, postUserId, imagesLength, setShowMenu, postId, userToken, setRefresh }) => {
-    console.log(postId, userToken)
     const [myPost, setMyPost] = useState(userId === postUserId)
     const menu = useRef(null)
     useClickOutSide(menu, ()=>setShowMenu(false))
