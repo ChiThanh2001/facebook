@@ -52,7 +52,7 @@ exports.register = async (req, res) => {
     }
 
     const hashPassword = await bcrypt.hash(password, 12);
-    const username = first_name + last_name;
+    const username = first_name.toLowerCase() + last_name.toLowerCase();
 
     const user = await new User({
       first_name,
@@ -239,3 +239,16 @@ exports.getProfile = async (req,res)=>{
     })
   }
 }
+
+exports.updateProfilePicture = async (req, res) => {
+  try {
+    const { url } = req.body;
+
+    await User.findByIdAndUpdate(req.user.id, {
+      picture: url,
+    });
+    res.json(url);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

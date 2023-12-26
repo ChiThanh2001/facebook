@@ -1,13 +1,13 @@
 import { Feeling, LiveVideo, Photo } from "../../svg";
 import UserMenu from "../header/userMenu";
 import "./style.css";
-export default function CreatePost({ user, setVisible, margin }) {
+export default function CreatePost({user, setVisible, eachUserProfile, margin }) {
   return (
     <div className={`createPost ${margin ? 'fix_margin' : ''}`}>
       <div className="createPost_header">
-        <img src={user?.picture} alt="error" />
+        <img src={eachUserProfile?.picture || user.picture} alt="error" />
         <div className="open_post hover2" onClick={ ()=> setVisible(true) }>
-          What's on your mind, {user?.first_name}
+          What's on your mind, {eachUserProfile?.first_name}
         </div>
       </div>
       <div className="create_splitter"></div>

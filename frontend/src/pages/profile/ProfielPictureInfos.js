@@ -1,12 +1,12 @@
 import { useState } from "react";
 import ProfilePicture from "../../components/profielPicture";
 
-export default function ProfielPictureInfos({ profile }) {
-  const [show, setShow] = useState(true);
+export default function ProfielPictureInfos({ profile, setRefresh }) {
+  const [show, setShow] = useState(false);
 
   return (
     <div className="profile_img_wrap">
-      {show && <ProfilePicture />}
+      {show && <ProfilePicture setShow={setShow} setRefresh={setRefresh} />}
       <div className="profile_w_left">
         <div className="profile_w_img">
           <div
@@ -16,7 +16,7 @@ export default function ProfielPictureInfos({ profile }) {
               backgroundImage: `url(${profile?.picture})`,
             }}
           ></div>
-          <div className="profile_circle hover1">
+          <div className="profile_circle hover1" onClick={() => setShow(true)}>
             <i className="camera_filled_icon"></i>
           </div>
         </div>

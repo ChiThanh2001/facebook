@@ -18,6 +18,7 @@ import { getUserPosts } from "../../function/post";
 export default function Profile() {
   const [visible, setVisible] = useState(false)
   const [refresh, setRefresh] = useState(false)
+  const [eachUserProfile, setEachUserProfile] = useState({})
   
   const { username } = useParams();
   const navigate = useNavigate();
@@ -29,9 +30,10 @@ export default function Profile() {
     profile: {},
     error: "",
   });
+
   useEffect(() => {
     getProfile();
-  }, [userName]);
+  }, [userName,refresh]);
   const getProfile = async () => {
     try {
       dispatch({
@@ -45,7 +47,7 @@ export default function Profile() {
           },
         }
       );
-      console.log('data',data)
+
       if (data.ok === false) {
         navigate("/profile");
       } else {
@@ -64,8 +66,17 @@ export default function Profile() {
 
   const userPosts = async ()=>{
     try {
-      const data = await getUserPosts(user.id, user.token)
-      setPosts(data)
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}/getProfile/${userName}`,
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
+      setEachUserProfile(data)
+      const listPosts = await getUserPosts(data._id, user.token)
+      setPosts(listPosts)
     } catch (error) {
       console.log(error)
     }
@@ -82,7 +93,7 @@ export default function Profile() {
         <div className="profile_top">
           <div className="profile_container">
             <Cover cover={profile.cover} />
-            <ProfielPictureInfos profile={profile}/>
+            <ProfielPictureInfos profile={profile} setRefresh={setRefresh} />
             <ProfileMenu />
           </div>
         </div>
@@ -92,7 +103,7 @@ export default function Profile() {
             <ProfileLeft />
           </div>
           <div className="body_right">
-            <ProfileRight setVisible={setVisible}/>
+            <ProfileRight setVisible={setVisible} eachUserProfile={eachUserProfile}/>
             {posts.map(post=>{
               return <Post key={post._id} post={post} setRefresh={setRefresh}/>
             })}
