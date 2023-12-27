@@ -21,7 +21,7 @@ import AllMenu from "./AllMenu";
 import useClickOutside from "../../helpers/clickOutside";
 import UserMenu from "./userMenu";
 
-export default function Header({ page }) {
+export default function Header({ page, setRefresh }) {
   const { user } = useSelector((user) => ({ ...user }));
   const color = "#65676b";
   const [showSearchMenu, setShowSearchMenu] = useState(false);
@@ -35,6 +35,9 @@ export default function Header({ page }) {
   useClickOutside(usermenu, () => {
     setShowUserMenu(false);
   });
+  const rerender = ()=>{
+    setRefresh(prev => !prev)
+  }
   return (
     <header>
       <div className="header_left">
@@ -79,7 +82,7 @@ export default function Header({ page }) {
         </Link>
       </div>
       <div className="header_right">
-        <Link to="/profile" className="profile_link hover1">
+        <Link to="/profile" className="profile_link hover1" onClick={rerender}>
           <img src={user?.picture} alt="" />
           <span>{user?.first_name}</span>
         </Link>

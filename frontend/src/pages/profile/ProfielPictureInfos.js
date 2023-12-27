@@ -1,8 +1,10 @@
 import { useState } from "react";
 import ProfilePicture from "../../components/profielPicture";
+import { useSelector } from "react-redux";
 
-export default function ProfielPictureInfos({ profile, setRefresh }) {
+export default function ProfielPictureInfos({ profile, setRefresh, eachUserProfile }) {
   const [show, setShow] = useState(false);
+  const { user } = useSelector(state=> ({...state}))
 
   return (
     <div className="profile_img_wrap">
@@ -16,9 +18,11 @@ export default function ProfielPictureInfos({ profile, setRefresh }) {
               backgroundImage: `url(${profile?.picture})`,
             }}
           ></div>
-          <div className="profile_circle hover1" onClick={() => setShow(true)}>
-            <i className="camera_filled_icon"></i>
-          </div>
+          {user.id === eachUserProfile._id && 
+            <div className="profile_circle hover1" onClick={() => setShow(true)}>
+              <i className="camera_filled_icon"></i>
+            </div>
+          }
         </div>
         <div className="profile_w_col">
           <div className="profile_name">
@@ -29,16 +33,18 @@ export default function ProfielPictureInfos({ profile, setRefresh }) {
           <div className="profile_friend_imgs"></div>
         </div>
       </div>
-      <div className="profile_w_right">
-        <div className="blue_btn">
-          <img src="../../../icons/plus.png" alt="" className="invert" />
-          <span>Add to story</span>
+      {user.id === eachUserProfile._id && 
+        <div className="profile_w_right">
+          <div className="blue_btn">
+            <img src="../../../icons/plus.png" alt="" className="invert" />
+            <span>Add to story</span>
+          </div>
+          <div className="gray_btn">
+            <i className="edit_icon"></i>
+            <span>Edit profile</span>
+          </div>
         </div>
-        <div className="gray_btn">
-          <i className="edit_icon"></i>
-          <span>Edit profile</span>
-        </div>
-      </div>
+      }
     </div>
   );
 }

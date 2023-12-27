@@ -86,14 +86,16 @@ export default function Profile() {
     userPosts()
   },[refresh])
 
+  console.log('rerender')
+
   return (
     <div className="profile">
-      <Header page="profile" />
+      <Header page="profile" setRefresh={setRefresh} />
       <div className="profile_container">
         <div className="profile_top">
           <div className="profile_container">
-            <Cover cover={profile.cover} />
-            <ProfielPictureInfos profile={profile} setRefresh={setRefresh} />
+            <Cover cover={profile.cover} user={user} eachUserProfile={eachUserProfile}/>
+            <ProfielPictureInfos profile={profile} setRefresh={setRefresh} eachUserProfile={eachUserProfile}/>
             <ProfileMenu />
           </div>
         </div>
