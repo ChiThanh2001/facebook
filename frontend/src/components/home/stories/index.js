@@ -2,12 +2,15 @@ import { ArrowRight, Plus } from "../../../svg";
 import "./style.css";
 import { stories } from "../../../data/home";
 import Story from "./Story";
+import { useSelector } from "react-redux";
 export default function Stories() {
+  const { user } = useSelector(state=> ({...state}))
+
   return (
     <div className="stories">
       <div className="create_story_card">
         <img
-          src="../../../images/default_pic.png"
+          src={user.picture}
           alt=""
           className="create_story_img"
         />
