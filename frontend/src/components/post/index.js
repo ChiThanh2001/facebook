@@ -166,7 +166,7 @@ export default function Post({ post, setRefresh }) {
           {visibleComment && (<div className="post_comment">
             <div className="comment_box">
               <div className="img_user">
-                <img src={post?.user?.picture} />
+                <img src={user?.picture} />
               </div>
               <div className="box_chat">
                 <textarea onKeyUp={handleComment} type="text" className="input_chat" placeholder="What are you thinking..." ref={textRef} value={text} onChange={(e) => setText(e.target.value)}/>
