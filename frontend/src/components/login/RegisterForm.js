@@ -87,6 +87,9 @@ export default function RegisterForm({setVisible}) {
         bDay,
         gender,
       })
+      if(data.message.code){
+        return setError("This user name already in used")
+      }
       setError('')
       setSuccess(data.message)
     } catch (error) {

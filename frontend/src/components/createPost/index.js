@@ -6,7 +6,7 @@ export default function CreatePost({user, setVisible, eachUserProfile, margin })
     eachUserProfile && user.id === eachUserProfile._id ? (
       <div className={`createPost ${margin ? 'fix_margin' : ''}`}>
         <div className="createPost_header">
-          <img src={eachUserProfile?.picture || user.picture} alt="error" />
+          <img src={eachUserProfile?.picture || user?.picture} alt="error" />
           <div className="open_post hover2" onClick={ ()=> setVisible(true) }>
             What's on your mind, {eachUserProfile?.first_name}
           </div>
@@ -30,7 +30,7 @@ export default function CreatePost({user, setVisible, eachUserProfile, margin })
     ):eachUserProfile && user.id !== eachUserProfile._id ? "":(
       <div className={`createPost ${margin ? 'fix_margin' : ''}`}>
         <div className="createPost_header">
-          <img src={eachUserProfile?.picture || user.picture} alt="error" />
+          <img src={eachUserProfile?.picture || user?.picture} alt="error" />
           <div className="open_post hover2" onClick={ ()=> setVisible(true) }>
             What's on your mind, {user?.first_name}
           </div>
