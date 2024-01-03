@@ -32,14 +32,11 @@ export default function Activate() {
                 Authorization: `Bearer ${token}`
             }
         })
-    
-        dispatch({type:'VERIFY',payload :{verified: true, picture: data.picture, first_name:data.first_name, last_name: data.last_name}})
-        Cookies.set('user',JSON.stringify({verified : true, picture: data.picture, first_name:data.first_name, last_name: data.last_name}))
         setSuccess(true)
         setActivateInfo({message: data.message})
 
         setTimeout(()=>{
-            navigate('/')
+            navigate('/login')
         },3000)
     } catch (error) {
         console.log(error)
@@ -56,13 +53,6 @@ export default function Activate() {
       {
         success && <ActivateForm header={activateInfo.message} message='Welcome To Facebook' type='success' />
       }
-      <Header />
-      <LeftHome user={user} />
-      <div className="home_middle">
-        <Stories />
-        <CreatePost user={user} />
-      </div>
-      <RightHome user={user} />
     </div>
   );
 }
