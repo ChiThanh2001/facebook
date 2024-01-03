@@ -267,3 +267,8 @@
   padding-top:6px;
   cursor: pointer;
 }
+
+.friendship{
+  display: flex;
+  gap: 10px;
+}

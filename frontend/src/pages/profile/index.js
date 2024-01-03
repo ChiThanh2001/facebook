@@ -95,7 +95,7 @@ export default function Profile() {
         <div className="profile_top">
           <div className="profile_container">
             <Cover cover={profile.cover} user={user} eachUserProfile={eachUserProfile}/>
-            <ProfielPictureInfos profile={profile} setRefresh={setRefresh} eachUserProfile={eachUserProfile}/>
+            <ProfielPictureInfos profile={profile} setRefresh={setRefresh} eachUserProfile={eachUserProfile} getProfile={getProfile}/>
             <ProfileMenu />
           </div>
         </div>

@@ -12,6 +12,7 @@ import { useEffect, useReducer, useState } from "react";
 import io from "socket.io-client";
 import axios from "axios";
 import { postsReducer } from "./function/reducers";
+import FriendRequest from "./pages/friend/FriendRequest";
 
 function App() {
   const [visible, setVisible] = useState(false)
@@ -70,6 +71,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/profile/:username" element={<Profile setRefresh={setRefresh} />} />
           <Route path="/" element={<Home setVisible={setVisible} posts={posts} setRefresh={setRefresh}/>} />
+          <Route path="/friendRequest" element={<FriendRequest />} />
         </Route>
         <Route path='/activate/:token' element={<Activate />}/>
         <Route path='/reset' element={<Reset />}/>

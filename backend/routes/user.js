@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { register, activateAccount, login, auth,findUser, sendResetPasswordCode, validateResetCode, changePassword, getProfile, updateProfilePicture, addFriend, cancelRequest, follow, unfollow, acceptRequest } = require("../controllers/user");
+const { register, activateAccount, login, auth,findUser, sendResetPasswordCode, validateResetCode, changePassword, getProfile, updateProfilePicture, addFriend, cancelRequest, follow, unfollow, acceptRequest, getFriendRequest } = require("../controllers/user");
 const { authUser } = require("../middleware/auth");
 
 router.post("/register", register);
@@ -17,5 +17,5 @@ router.put("/cancelRequest/:id", authUser, cancelRequest);
 router.put("/follow/:id", authUser, follow);
 router.put("/unfollow/:id", authUser, unfollow);
 router.put("/acceptRequest/:id", authUser, acceptRequest);
-
+router.get("/getFriendRequest/:userId", authUser, getFriendRequest);
 module.exports = router;

@@ -67,7 +67,7 @@ export default function Header({ page, setRefresh }) {
         <Link to="/" className={`middle_icon ${page === "home" ? "active" : "hover1"}`}>
           {page === "home" ? <HomeActive /> : <Home color={color}/>}
         </Link>
-        <Link to="/" className="middle_icon hover1">
+        <Link to="/friendRequest" className="middle_icon hover1">
           <Friends color={color} />
         </Link>
         <Link to="/" className="middle_icon hover1">

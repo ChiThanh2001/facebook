@@ -255,8 +255,6 @@ exports.getProfile = async (req,res)=>{
     if (profile.requests.includes(user._id)) {
       friendship.requestSent = true;
     }
-    console.log(profile)
-    console.log({...profile.toObject()})
     return res.status(200).json({...profile.toObject(), friendship})
   }catch(error){
     res.status(400).json({
@@ -291,10 +289,10 @@ exports.addFriend = async (req, res) => {
           $push: { requests: sender._id },
         });
         await receiver.updateOne({
-          $push: { followers: sender._id },
+          $push: { follower: sender._id },
         });
         await sender.updateOne({
-          $push: { following: sender._id },
+          $push: { following: receiver._id },
         });
         res.json({ message: "friend request has been sent" });
       } else {
@@ -323,10 +321,10 @@ exports.cancelRequest = async (req, res) => {
           $pull: { requests: sender._id },
         });
         await receiver.updateOne({
-          $pull: { followers: sender._id },
+          $pull: { follower: sender._id },
         });
         await sender.updateOne({
-          $pull: { following: sender._id },
+          $pull: { following: receiver._id },
         });
         res.json({ message: "you successfully canceled request" });
       } else {
@@ -348,11 +346,11 @@ exports.follow = async (req, res) => {
       const sender = await User.findById(req.user.id);
       const receiver = await User.findById(req.params.id);
       if (
-        !receiver.followers.includes(sender._id) &&
+        !receiver.follower.includes(sender._id) &&
         !sender.following.includes(receiver._id)
       ) {
         await receiver.updateOne({
-          $push: { followers: sender._id },
+          $push: { follower: sender._id },
         });
 
         await sender.updateOne({
@@ -375,12 +373,13 @@ exports.unfollow = async (req, res) => {
     if (req.user.id !== req.params.id) {
       const sender = await User.findById(req.user.id);
       const receiver = await User.findById(req.params.id);
+
       if (
-        receiver.followers.includes(sender._id) &&
+        receiver.follower.includes(sender._id) &&
         sender.following.includes(receiver._id)
       ) {
         await receiver.updateOne({
-          $push: { followers: sender._id },
+          $pull: { follower: sender._id },
         });
 
         await sender.updateOne({
@@ -408,7 +407,7 @@ exports.acceptRequest = async (req, res) => {
           $push: { friends: sender._id, following: sender._id },
         });
         await sender.update({
-          $push: { friends: receiver._id, followers: receiver._id },
+          $push: { friends: receiver._id, follower: receiver._id },
         });
         await receiver.updateOne({
           $pull: { requests: sender._id },
@@ -440,14 +439,14 @@ exports.unfriend = async (req, res) => {
           $pull: {
             friends: sender._id,
             following: sender._id,
-            followers: sender._id,
+            follower: sender._id,
           },
         });
         await sender.update({
           $pull: {
             friends: receiver._id,
             following: receiver._id,
-            followers: receiver._id,
+            follower: receiver._id,
           },
         });
 
@@ -472,7 +471,7 @@ exports.deleteRequest = async (req, res) => {
         await receiver.update({
           $pull: {
             requests: sender._id,
-            followers: sender._id,
+            follower: sender._id,
           },
         });
         await sender.update({
@@ -488,6 +487,28 @@ exports.deleteRequest = async (req, res) => {
     } else {
       return res.status(400).json({ message: "You can't delete yourself" });
     }
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+exports.getFriendRequest = async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    const friendRequest = await User.findById(userId).select('requests');
+
+    let arr = [];
+
+    if (friendRequest.requests.length > 0) {
+      const promises = friendRequest.requests.map(id => {
+        return User.findById(id).select('first_name last_name picture')
+          .then(result => result)
+          .catch(err => console.log(err));
+      });
+      arr = await Promise.all(promises);
+      return res.status(200).json(arr);
+    }
+    res.status(200).json(arr);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
