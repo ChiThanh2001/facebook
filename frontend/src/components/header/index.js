@@ -43,7 +43,7 @@ export default function Header({ page, setRefresh }) {
       <div className="header_left">
         <Link to="/" className="header_logo">
           <div className="circle">
-            <Logo />
+            <img src="../../../images/my_logo.png" style={{width: "40px", height: "40px",borderRadius:"50%"}}/>
           </div>
         </Link>
         <div

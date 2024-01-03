@@ -13,6 +13,17 @@
 }
 .login_1 span {
   font-size: 20px;
+  display: inline-block;
+  background: linear-gradient(45deg, #FFB6C1, #FFD700, #98FB98, #00BFFF, #9370DB, #FFA07A, #FFB6C1);
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: rainbow-text-animation 5s linear infinite;
+}
+.format_image{
+  height: 200px;
+  width: 200px;
+  border-radius:50%;
+  margin-left: 50px;
 }
 .login_2 {
   text-align: center;
@@ -275,11 +286,20 @@
     margin-bottom: 15vh;
   }
   .login_1 img {
-    width: 300px;
-    margin-left: -1.7rem;
+    width: 200px;
+    margin-left: 100px;
+  }
+  .format_image{
+    height: 200px;
+    border-radius:50%;
   }
   .login_1 span {
     font-size: 28px;
+    display: inline-block;
+    background: linear-gradient(45deg, #FFB6C1, #FFD700, #98FB98, #00BFFF, #9370DB, #FFA07A, #FFB6C1);
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: rainbow-text-animation 5s linear infinite;
   }
   .login_2_wrap {
     width: 400px;
