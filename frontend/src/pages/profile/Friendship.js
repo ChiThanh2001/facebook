@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import useClickOutside from "../../helpers/clickOutside";
-import { addFriend, cancelRequest, follow, unfollow } from "../../function/user";
+import { acceptRequest, addFriend, cancelRequest, deleteRequest, follow, unfollow, unfriend } from "../../function/user";
 import { useSelector } from "react-redux";
 
 export default function Friendship({ friendshipData, profileId, getProfile }) {
@@ -37,6 +37,21 @@ export default function Friendship({ friendshipData, profileId, getProfile }) {
     await unfollow(profileId,user.token)
   }
 
+  const conFirmRequestHandler = async ()=>{
+    setFriendship({...friendship, friends:true, requestReceived:false, following:true})
+    await acceptRequest(profileId,user.token)
+  }
+
+  const unfriendHandler = async ()=>{
+    setFriendship({...friendship, friends:false, following:false})
+    await unfriend(profileId,user.token)
+  }
+
+  const deleteRequestHandler = async ()=>{
+    setFriendship({...friendship, friends:false, following:false, requestReceived:false})
+    await deleteRequest(profileId,user.token)
+  }
+
   return (
     <div className="friendship">
       {friendship?.friends ? (
@@ -47,16 +62,8 @@ export default function Friendship({ friendshipData, profileId, getProfile }) {
           </button>
           {friendsMenu && (
             <div className="open_cover_menu" ref={menu}>
-              <div className="open_cover_menu_item hover1">
-                <img src="../../../icons/favoritesOutline.png" alt="" />
-                Favorites
-              </div>
-              <div className="open_cover_menu_item hover1">
-                <img src="../../../icons/editFriends.png" alt="" />
-                Edit Friend list
-              </div>
               {friendship?.following ? (
-                <div className="open_cover_menu_item hover1">
+                <div className="open_cover_menu_item hover1" onClick={unfollowHandler}>
                   <img src="../../../icons/unfollowOutlined.png" alt="" />
                   Unfollow
                 </div>
@@ -66,7 +73,7 @@ export default function Friendship({ friendshipData, profileId, getProfile }) {
                   Follow
                 </div>
               )}
-              <div className="open_cover_menu_item hover1">
+              <div className="open_cover_menu_item hover1" onClick={unfriendHandler}>
                 <i className="unfriend_outlined_icon"></i>
                 Unfriend
               </div>
@@ -100,8 +107,8 @@ export default function Friendship({ friendshipData, profileId, getProfile }) {
             </button>
             {respondMenu && (
               <div className="open_cover_menu" ref={menu1}>
-                <div className="open_cover_menu_item hover1">Confirm</div>
-                <div className="open_cover_menu_item hover1">Delete</div>
+                <div className="open_cover_menu_item hover1" onClick={conFirmRequestHandler}>Confirm</div>
+                <div className="open_cover_menu_item hover1" onClick={deleteRequestHandler}>Delete</div>
               </div>
             )}
           </div>

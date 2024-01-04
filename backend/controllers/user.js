@@ -403,10 +403,10 @@ exports.acceptRequest = async (req, res) => {
       const receiver = await User.findById(req.user.id);
       const sender = await User.findById(req.params.id);
       if (receiver.requests.includes(sender._id)) {
-        await receiver.update({
+        await receiver.updateOne({
           $push: { friends: sender._id, following: sender._id },
         });
-        await sender.update({
+        await sender.updateOne({
           $push: { friends: receiver._id, follower: receiver._id },
         });
         await receiver.updateOne({
@@ -422,6 +422,7 @@ exports.acceptRequest = async (req, res) => {
         .json({ message: "You can't accept a request from  yourself" });
     }
   } catch (error) {
+    console.log(error)
     res.status(500).json({ message: error.message });
   }
 };
@@ -435,14 +436,14 @@ exports.unfriend = async (req, res) => {
         receiver.friends.includes(sender._id) &&
         sender.friends.includes(receiver._id)
       ) {
-        await receiver.update({
+        await receiver.updateOne({
           $pull: {
             friends: sender._id,
             following: sender._id,
             follower: sender._id,
           },
         });
-        await sender.update({
+        await sender.updateOne({
           $pull: {
             friends: receiver._id,
             following: receiver._id,
@@ -468,13 +469,13 @@ exports.deleteRequest = async (req, res) => {
       const receiver = await User.findById(req.user.id);
       const sender = await User.findById(req.params.id);
       if (receiver.requests.includes(sender._id)) {
-        await receiver.update({
+        await receiver.updateOne({
           $pull: {
             requests: sender._id,
             follower: sender._id,
           },
         });
-        await sender.update({
+        await sender.updateOne({
           $pull: {
             following: receiver._id,
           },
@@ -501,7 +502,7 @@ exports.getFriendRequest = async (req, res) => {
 
     if (friendRequest.requests.length > 0) {
       const promises = friendRequest.requests.map(id => {
-        return User.findById(id).select('first_name last_name picture')
+        return User.findById(id).select('first_name last_name picture username')
           .then(result => result)
           .catch(err => console.log(err));
       });
@@ -509,6 +510,28 @@ exports.getFriendRequest = async (req, res) => {
       return res.status(200).json(arr);
     }
     res.status(200).json(arr);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+exports.listFriend = async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    const listOfFriend = await User.findById(userId).select('friends');
+
+    let arr = [];
+
+    if (listOfFriend.friends.length > 0) {
+      const promises = listOfFriend.friends.map(id => {
+        return User.findById(id).select('first_name last_name picture username')
+          .then(result => result)
+          .catch(err => console.log(err));
+      });
+      arr = await Promise.all(promises);
+      return res.status(200).json(arr);
+    }
+    res.status(200).json(listOfFriend);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

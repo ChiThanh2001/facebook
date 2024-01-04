@@ -1,10 +1,13 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const RequestDetail = ({request}) => {
   return (
     <div className='listRequest'>
         <div className="title">
-            <img src={request.picture} className='avatar' />
+            <Link to={`/profile/${request.username}`}>
+              <img src={request.picture} className='avatar' />
+            </Link>
             <div className='name'>{request.first_name + " " +request.last_name}</div>
         </div>
         <div>

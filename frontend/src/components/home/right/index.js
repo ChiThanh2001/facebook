@@ -1,7 +1,18 @@
+import { useEffect, useState } from "react";
+import { listFriend } from "../../../function/user";
 import { Dots, NewRoom, Search } from "../../../svg";
 import Contact from "./Contact";
 import "./style.css";
 export default function RightHome({ user }) {
+  const [listOfFriend, setListOfFriend] = useState([])
+  const getListFriend = async ()=>{
+    const friends = await listFriend(user.id,user.token)
+    setListOfFriend(friends)
+  }
+
+  useEffect(()=>{
+    getListFriend()
+  },[])
   const color = "#65676b";
   return (
     <div className="right_home">
@@ -9,7 +20,7 @@ export default function RightHome({ user }) {
       <div className="splitter1"></div>
       <div className="contacts_wrap">
         <div className="contacts_header">
-          <div className="contacts_header_left">Contacts</div>
+          <div className="contacts_header_left">Friends</div>
           <div className="contacts_header_right">
             <div className="contact_circle hover1">
               <NewRoom color={color} />
@@ -23,7 +34,9 @@ export default function RightHome({ user }) {
           </div>
         </div>
         <div className="contacts_list">
-          <Contact user={user} />
+          {listOfFriend.length > 0 && listOfFriend.map((userFriend,index)=>{
+            return <Contact key={index} user={userFriend} />
+          })}
         </div>
       </div>
     </div>
