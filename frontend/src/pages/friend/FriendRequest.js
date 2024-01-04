@@ -3,10 +3,12 @@ import './style.css'
 import { useSelector } from 'react-redux'
 import { getFriendRequest } from '../../function/user'
 import RequestDetail from './RequestDetail'
+import Header from '../../components/header'
 
 const FriendRequest = () => {
     const { user } = useSelector(state=> ({...state}))
     const [requestInfo, setRequestInfo] = useState([])
+    const [refresh, setRefresh] = useState(false)
     const getRequest = async ()=>{
         const data = await getFriendRequest(user.id,user.token)
         setRequestInfo(data)
@@ -14,14 +16,21 @@ const FriendRequest = () => {
 
     useEffect(()=>{
         getRequest()
-    },[])
+    },[refresh])
+
     return (
         <>
-            {requestInfo.length > 0 ? (
-                requestInfo.map((request, index)=> <RequestDetail key={index} request={request} />)
-            ):(
-                <div>You do not have any friend request</div>
-            )}
+            <Header page="friendRequest" />
+            <div className='top'>
+                List of friend request
+            </div>
+            <div className='request_page'>
+                {requestInfo.length > 0 ? (
+                    requestInfo.map((request, index)=> <RequestDetail key={index} request={request} user={user} setRefresh={setRefresh} />)
+                ):(
+                    <div className='empty_request'>You do not have any friend request</div>
+                )}
+            </div>
         </>
     )
 }

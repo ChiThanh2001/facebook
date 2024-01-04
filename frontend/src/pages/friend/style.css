@@ -68,3 +68,40 @@
 .name{
     margin-top:7px
 }
+
+.request_page{
+
+}
+.top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: large;
+  font-weight: bold;
+  background-color: #3498db; /* Background color */
+  color: #ffffff; /* Text color */
+  padding: 10px; /* Padding around the content */
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle lift */
+  margin-top: 70px;
+}
+
+/* Add this to your existing CSS file or create a new one */
+
+.empty_request {
+  text-align: center;
+  margin: 20px;
+  padding: 15px;
+  font-size: 18px;
+  color: #555; /* Dark gray text color */
+  background-color: #f1f1f1; /* Light gray background color */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle lift */
+}
+
+.empty_request::before {
+  content: "\1F622"; /* Unicode for a sad face emoji */
+  display: block;
+  font-size: 36px;
+  margin-bottom: 10px;
+}

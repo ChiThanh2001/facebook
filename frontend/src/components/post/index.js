@@ -194,7 +194,7 @@ export default function Post({ post, setRefresh }) {
             </div>
           </div>)}
       </div>
-      {comments && comments.slice(0,3).map((comment,i)=> <Comment comment={comment} key={i} />)} 
+      {comments && visibleComment && comments.map((comment,i)=> <Comment comment={comment} key={i} />)} 
       {showMenu && <PostMenu userId={user.id} postUserId={post.user._id} imagesLength={post?.images?.length} postId={post._id} userToken = {user.token} setShowMenu={setShowMenu} setRefresh={setRefresh} />}
     </div>
   );
