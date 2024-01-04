@@ -135,7 +135,7 @@ export default function Post({ post, setRefresh }) {
           <div className="post_info">
             <div className="react_total">{reactInfo} react</div>
             <div className="comment">{commentAmount} comment</div>
-            <div className="share">1 share</div>
+            <div className="share">0 share</div>
           </div>
           <div className="post_react">
             {/* <ReactPopup visible={visible} setVisible={setVisible}/> */}
