@@ -2,16 +2,26 @@ import { useEffect, useRef, useState } from "react";
 import useClickOutside from "../../helpers/clickOutside";
 import { acceptRequest, addFriend, cancelRequest, deleteRequest, follow, unfollow, unfriend } from "../../function/user";
 import { useSelector } from "react-redux";
+import ChatBox from "./ChatBox";
 
-export default function Friendship({ friendshipData, profileId, getProfile }) {
+export default function Friendship({ friendshipData, profileId, profile }) {
   const [friendship, setFriendship] = useState(friendshipData)
   const [friendsMenu, setFriendsMenu] = useState(false);
   const [respondMenu, setRespondMenu] = useState(false);
+  const [showChatBox, setShowChatBox] = useState(false);
   const { user } = useSelector(state=> ({...state}))
   const menu = useRef(null);
   const menu1 = useRef(null);
   useClickOutside(menu, () => setFriendsMenu(false));
   useClickOutside(menu1, () => setRespondMenu(false));
+
+  const openChatBox = () => {
+    setShowChatBox(true);
+  };
+
+  const closeChatBox = () => {
+    setShowChatBox(false);
+  };
 
   useEffect(()=>{
     setFriendship(friendshipData)
@@ -125,7 +135,7 @@ export default function Friendship({ friendshipData, profileId, getProfile }) {
           <span>Follow</span>
         </button>
       )}
-      <button className={friendship?.friends ? "blue_btn" : "gray_btn"}>
+      <button className={friendship?.friends ? "blue_btn" : "gray_btn"} onClick={openChatBox}>
         <img
           src="../../../icons/message.png"
           className={friendship?.friends && "invert"}
@@ -133,6 +143,9 @@ export default function Friendship({ friendshipData, profileId, getProfile }) {
         />
         <span>Message</span>
       </button>
+      {showChatBox && (
+        <ChatBox user={user} friendUserId={profileId} onClose={closeChatBox} profile={profile} />
+      )}
     </div>
   );
 }

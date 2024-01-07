@@ -6,6 +6,7 @@ const Code = require("../models/Code");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { generateCode } = require("../helpers/generateCode");
+const Message = require("../models/Message");
 
 exports.register = async (req, res) => {
   try {
@@ -536,3 +537,15 @@ exports.listFriend = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+exports.getChatMessages = async (req,res)=>{
+  try {
+    const chatId = req.params.chatId;
+    const messages = await Message.find({ chatId }).sort({ timestamp: 1 });
+
+    res.json(messages);
+  } catch (error) {
+    console.error('Error fetching messages:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+}

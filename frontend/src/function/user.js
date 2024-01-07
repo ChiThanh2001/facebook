@@ -164,3 +164,17 @@ export const listFriend = async (id, token) => {
     return error.response.data.message;
   }
 };
+
+export const getChatMessages = async (chatId, token) => {
+  try {
+    const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getChatMessages/${chatId}`,{
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    return data ;
+  } catch (error) {
+    console.error('Error fetching messages:', error)
+    return error.response.data.message;
+  }
+};

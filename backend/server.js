@@ -8,6 +8,7 @@ const fileUpload = require("express-fileupload");
 const path = require("path");
 const http = require("http");
 const socketIO = require("socket.io");
+const Message = require("./models/Message");
 
 dotenv.config();
 
@@ -38,7 +39,20 @@ readdirSync(routesPath).map((file) => {
 io.on("connection", (socket) => {
   console.log("A user connected");
 
-  // Handle custom events or further logic here
+  socket.on('chat message', async (msg) => {
+    try {
+      const savedMessage = await Message.create({
+        chatId: msg.chatId,
+        senderId: msg.userId,
+        text: msg.text,
+      });
+
+      // Broadcast the saved message to all connected clients
+      io.emit('chat message', savedMessage);
+    } catch (error) {
+      console.error('Error saving message:', error);
+    }
+  });
 
   // Disconnect event
   socket.on("disconnect", () => {

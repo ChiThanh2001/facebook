@@ -3,7 +3,7 @@ import ProfilePicture from "../../components/profielPicture";
 import { useSelector } from "react-redux";
 import Friendship from "./Friendship";
 
-export default function ProfielPictureInfos({ profile, setRefresh, eachUserProfile, getProfile }) {
+export default function ProfielPictureInfos({ profile, setRefresh, eachUserProfile }) {
   const [show, setShow] = useState(false);
   const { user } = useSelector(state=> ({...state}))
 
@@ -44,7 +44,7 @@ export default function ProfielPictureInfos({ profile, setRefresh, eachUserProfi
             <i className="edit_icon"></i>
             <span>Edit profile</span>
           </div>
-        </div>) : <Friendship friendshipData={profile.friendship} profileId={profile._id} getProfile={getProfile}/>
+        </div>) : <Friendship friendshipData={profile.friendship} profileId={profile._id} profile={profile}/>
       }
     </div>
   );
