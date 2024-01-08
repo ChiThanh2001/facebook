@@ -22,7 +22,7 @@ app.use(fileUpload({
 const server = http.createServer(app);
 const io = socketIO(server,{
   cors: {
-    origin: process.env.NODE_ENV ? "https://tvibe-fe.onrender.com" : "http://localhost:3000",
+    origin: process.env.NODE_ENV ?  process.env.PRODUCTION_URL : process.env.BASE_URL,
     methods: ["GET", "POST"],
   },
 });
