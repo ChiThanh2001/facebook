@@ -22,7 +22,7 @@ app.use(fileUpload({
 const server = http.createServer(app);
 const io = socketIO(server,{
   cors: {
-    origin: "http://localhost:3000", // Change this to the origin of your React app
+    origin: process.env.NODE_ENV ? "https://tvibe-fe.onrender.com" : "http://localhost:3000",
     methods: ["GET", "POST"],
   },
 });
