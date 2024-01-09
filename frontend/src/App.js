@@ -17,6 +17,8 @@ import FriendRequest from "./pages/friend/FriendRequest";
 function App() {
   const [visible, setVisible] = useState(false)
   const [refresh, setRefresh] = useState(false)
+  const [isFollowing, setIsFollowing] = useState(false);
+
   const { user } = useSelector(state=> ({...state}))
   const [{ loading, error, posts }, dispatch] = useReducer(postsReducer, {
     loading: false,
@@ -27,13 +29,17 @@ function App() {
   const socket = io(process.env.REACT_APP_BACKEND_URL);
   
   useEffect(() => {
-    getAllPosts();
+    if(isFollowing){
+      getFollowingPost()
+    }else{
+      getAllPosts();
+    }
 
     // Clean up the socket connection when the component unmounts
     return () => {
       socket.disconnect();
     };
-  }, [user, refresh]);
+  }, [user, refresh, isFollowing]);
 
   const getAllPosts = async () => {
     try {
@@ -42,6 +48,31 @@ function App() {
       });
       const { data } = await axios.get(
         `${process.env.REACT_APP_BACKEND_URL}/getAllposts`,
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
+      dispatch({
+        type: "POSTS_SUCCESS",
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: "POSTS_ERROR",
+        payload: error?.response?.data?.message,
+      });
+    }
+  };
+
+  const getFollowingPost = async () => {
+    try {
+      dispatch({
+        type: "POSTS_REQUEST",
+      });
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}/getFollowingPost`,
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
@@ -70,7 +101,7 @@ function App() {
         <Route element = {<LoggedInRoutes />}>
           <Route path="/profile" element={<Profile />} />
           <Route path="/profile/:username" element={<Profile setRefresh={setRefresh} />} />
-          <Route path="/" element={<Home setVisible={setVisible} posts={posts} setRefresh={setRefresh}/>} />
+          <Route path="/" element={<Home setVisible={setVisible} posts={posts} setRefresh={setRefresh} setIsFollowing={setIsFollowing} isFollowing={isFollowing} />} />
           <Route path="/friendRequest" element={<FriendRequest />} />
         </Route>
         <Route path='/activate/:token' element={<Activate />}/>

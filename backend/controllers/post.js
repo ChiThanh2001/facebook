@@ -1,4 +1,5 @@
 const Post = require("../models/Post");
+const User = require("../models/User");
 
 exports.createPost = async (req, res) => {
   try {
@@ -82,6 +83,29 @@ exports.getUserPosts = async (req,res)=>{
     const { userId } = req.params
     const post = await Post.find({user: userId}).populate('user','first_name last_name picture username gender text').populate("comments.commentBy", "first_name last_name picture username").sort({ createdAt: "desc" })
     return res.status(200).json(post)
+  } catch (error) {
+    console.log(error.message)
+    return res.status(400).json({ message: error.message });
+  }
+}
+
+exports.getFollowingPost = async (req,res)=>{
+  try {
+    let arr = []
+    const userId = req.user.id
+    const userFollowing = await User.findById(userId).select("following")
+    if(userFollowing.following.length > 0){
+      const promises = userFollowing.following.map(id=>{
+        return Post.find({ user: id }).populate('user','first_name last_name picture username gender text').populate("comments.commentBy", "first_name last_name picture username").sort({ createdAt: "desc" })
+        .then(result => result)
+        .catch(e=>{
+          console.log(e)
+        })
+      })
+      arr = await Promise.all(promises);
+      return res.status(200).json(arr.flat());
+    }
+    return res.json(userFollowing)
   } catch (error) {
     console.log(error.message)
     return res.status(400).json({ message: error.message });

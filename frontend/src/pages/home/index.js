@@ -7,16 +7,18 @@ import Stories from "../../components/home/stories";
 import "./style.css";
 import CreatePost from "../../components/createPost";
 import Post from "../../components/post";
+import { Following } from "../../components/home/following";
 
-export default function Home({ setVisible, posts, setRefresh }) {
+export default function Home({ setVisible, posts, setRefresh, setIsFollowing, isFollowing }) {
   const { user } = useSelector((user) => ({ ...user }));
-  
+  console.log('posts gaga',posts)
   return (
     <div className="home">
       <Header page="home" />
       <LeftHome user={user} />
       <div className="home_middle">
-        <Stories />
+        {/* <Stories /> */}
+        <Following user={user} setIsFollowing={setIsFollowing} isFollowing={isFollowing} />
         <CreatePost user={user} setVisible={setVisible}/>
         <div className="posts">
           {posts.map((post) => (
