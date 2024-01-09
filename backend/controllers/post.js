@@ -105,7 +105,7 @@ exports.getFollowingPost = async (req,res)=>{
       arr = await Promise.all(promises);
       return res.status(200).json(arr.flat());
     }
-    return res.json(userFollowing)
+    return res.json(userFollowing.following)
   } catch (error) {
     console.log(error.message)
     return res.status(400).json({ message: error.message });
