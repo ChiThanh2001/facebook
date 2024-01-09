@@ -20,9 +20,10 @@ app.use(fileUpload({
 
 // Initialize HTTP server and Socket.IO
 const server = http.createServer(app);
+console.log(process.env.NODE_ENV)
 const io = socketIO(server,{
   cors: {
-    origin: process.env.NODE_ENV ?  process.env.PRODUCTION_URL : process.env.BASE_URL,
+    origin: process.env.NODE_ENV === "production" ?  process.env.PRODUCTION_URL : process.env.BASE_URL,
     methods: ["GET", "POST"],
   },
 });
