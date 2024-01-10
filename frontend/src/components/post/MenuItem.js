@@ -3,7 +3,7 @@ import { deletPost } from '../../function/post';
 
 const MenuItem = ({ icon, title, subtitle, img, removePost  }) => {
   return (
-    <li className="hover1">
+    <li className="hover3">
         {
           img ? <img src={img} /> : <i className={icon}></i>
         }

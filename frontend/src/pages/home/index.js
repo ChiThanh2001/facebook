@@ -11,7 +11,7 @@ import { Following } from "../../components/home/following";
 
 export default function Home({ setVisible, posts, setRefresh, setIsFollowing, isFollowing }) {
   const { user } = useSelector((user) => ({ ...user }));
-  console.log('posts gaga',posts)
+
   return (
     <div className="home">
       <Header page="home" />
