@@ -73,17 +73,17 @@ export default function Friendship({ friendshipData, profileId, profile }) {
           {friendsMenu && (
             <div className="open_cover_menu" ref={menu}>
               {friendship?.following ? (
-                <div className="open_cover_menu_item hover1" onClick={unfollowHandler}>
+                <div className="open_cover_menu_item hover3" onClick={unfollowHandler}>
                   <img src="../../../icons/unfollowOutlined.png" alt="" />
                   Unfollow
                 </div>
               ) : (
-                <div className="open_cover_menu_item hover1" onClick={followHandler}>
+                <div className="open_cover_menu_item hover3" onClick={followHandler}>
                   <img src="../../../icons/unfollowOutlined.png" alt="" />
                   Follow
                 </div>
               )}
-              <div className="open_cover_menu_item hover1" onClick={unfriendHandler}>
+              <div className="open_cover_menu_item hover3" onClick={unfriendHandler}>
                 <i className="unfriend_outlined_icon"></i>
                 Unfriend
               </div>
@@ -117,8 +117,8 @@ export default function Friendship({ friendshipData, profileId, profile }) {
             </button>
             {respondMenu && (
               <div className="open_cover_menu" ref={menu1}>
-                <div className="open_cover_menu_item hover1" onClick={conFirmRequestHandler}>Confirm</div>
-                <div className="open_cover_menu_item hover1" onClick={deleteRequestHandler}>Delete</div>
+                <div className="open_cover_menu_item hover3" onClick={conFirmRequestHandler}>Confirm</div>
+                <div className="open_cover_menu_item hover3" onClick={deleteRequestHandler}>Delete</div>
               </div>
             )}
           </div>

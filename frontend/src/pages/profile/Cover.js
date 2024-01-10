@@ -19,11 +19,11 @@ export default function Cover({ cover, user, eachUserProfile }) {
           </div>
           {showCoverMenu && (
             <div className="open_cover_menu" ref={menuRef}>
-              <div className="open_cover_menu_item hover1">
+              <div className="open_cover_menu_item hover3">
                 <i className="photo_icon"></i>
                 Select Photo
               </div>
-              <div className="open_cover_menu_item hover1">
+              <div className="open_cover_menu_item hover3">
                 <i className="upload_icon"></i>
                 Upload Photo
               </div>
