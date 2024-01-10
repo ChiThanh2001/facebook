@@ -165,6 +165,23 @@ export const listFriend = async (id, token) => {
   }
 };
 
+export const search = async (searchTerm, token) => {
+  try {
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_BACKEND_URL}/search/${searchTerm}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return data ;
+  } catch (error) {
+    console.log(error)
+    return error.response.data.message;
+  }
+};
+
 export const getChatMessages = async (chatId, token) => {
   try {
     const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getChatMessages/${chatId}`,{

@@ -13,15 +13,15 @@ export default function CreatePost({user, setVisible, eachUserProfile, margin })
         </div>
         <div className="create_splitter"></div>
         <div className="createPost_body">
-          <div className="createPost_icon hover1">
+          <div className="createPost_icon hover3">
             <LiveVideo color="#f3425f" />
             Live Video
           </div>
-          <div className="createPost_icon hover1">
+          <div className="createPost_icon hover3">
             <Photo color="#4bbf67" />
             Photo/Video
           </div>
-          <div className="createPost_icon hover1">
+          <div className="createPost_icon hover3">
             <Feeling color="#f7b928" />
             Feeling/Activity
           </div>
@@ -37,15 +37,15 @@ export default function CreatePost({user, setVisible, eachUserProfile, margin })
         </div>
         <div className="create_splitter"></div>
         <div className="createPost_body">
-          <div className="createPost_icon hover1">
+          <div className="createPost_icon hover3">
             <LiveVideo color="#f3425f" />
             Live Video
           </div>
-          <div className="createPost_icon hover1">
+          <div className="createPost_icon hover3">
             <Photo color="#4bbf67" />
             Photo/Video
           </div>
-          <div className="createPost_icon hover1">
+          <div className="createPost_icon hover3">
             <Feeling color="#f7b928" />
             Feeling/Activity
           </div>

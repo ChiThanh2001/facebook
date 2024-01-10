@@ -61,28 +61,28 @@ export default function Header({ page, setRefresh }) {
         </div>
       </div>
       {showSearchMenu && (
-        <SearchMenu color={color} setShowSearchMenu={setShowSearchMenu} />
+        <SearchMenu color={color} setShowSearchMenu={setShowSearchMenu} token={user.token} />
       )}
       <div className="header_middle">
-        <Link to="/" className={`middle_icon ${page === "home" ? "active" : "hover1"}`}>
+        <Link to="/" className={`middle_icon ${page === "home" ? "active" : "hover3"}`}>
           {page === "home" ? <HomeActive /> : <Home color={color}/>}
         </Link>
-        <Link to="/friendRequest" className="middle_icon hover1">
+        <Link to="/friendRequest" className="middle_icon hover3">
           <Friends color={color} />
         </Link>
-        <Link to="/" className="middle_icon hover1">
+        <Link to="/" className="middle_icon hover3">
           <Watch color={color} />
           <div className="middle_notification">9+</div>
         </Link>
-        <Link to="/" className="middle_icon hover1">
+        <Link to="/" className="middle_icon hover3">
           <Market color={color} />
         </Link>
-        <Link to="/" className="middle_icon hover1">
+        <Link to="/" className="middle_icon hover3">
           <Gaming color={color} />
         </Link>
       </div>
       <div className="header_right">
-        <Link to="/profile" className="profile_link hover1" onClick={rerender}>
+        <Link to="/profile" className="profile_link hover3" onClick={rerender}>
           <img src={user?.picture} alt="" />
           <span>{user?.first_name}</span>
         </Link>
