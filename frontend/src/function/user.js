@@ -200,7 +200,7 @@ export const saveProfileDetail = async (details, token) => {
   try {
     const {
       bio,
-      othername,
+      otherName,
       job,
       workplace,
       highschool,
@@ -213,7 +213,7 @@ export const saveProfileDetail = async (details, token) => {
       `${process.env.REACT_APP_BACKEND_URL}/saveProfileDetail`,
       {
         bio,
-        othername,
+        otherName,
         job,
         workplace,
         highschool,

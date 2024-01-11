@@ -68,14 +68,14 @@ export default function Friendship({ friendshipData, profileId, profile }) {
         <div className="friends_menu_wrap">
           <button className="gray_btn" onClick={() => setFriendsMenu(true)}>
             <img src="../../../icons/friends.png" alt="" />
-            <span>Friends</span>
+            <span>Bạn bè</span>
           </button>
           {friendsMenu && (
             <div className="open_cover_menu" ref={menu}>
               {friendship?.following ? (
                 <div className="open_cover_menu_item hover3" onClick={unfollowHandler}>
                   <img src="../../../icons/unfollowOutlined.png" alt="" />
-                  Unfollow
+                  Bỏ theo dõi
                 </div>
               ) : (
                 <div className="open_cover_menu_item hover3" onClick={followHandler}>
@@ -85,7 +85,7 @@ export default function Friendship({ friendshipData, profileId, profile }) {
               )}
               <div className="open_cover_menu_item hover3" onClick={unfriendHandler}>
                 <i className="unfriend_outlined_icon"></i>
-                Unfriend
+                Xóa bạn bè
               </div>
             </div>
           )}
@@ -95,7 +95,7 @@ export default function Friendship({ friendshipData, profileId, profile }) {
         !friendship?.requestReceived && (
           <button className="blue_btn" onClick={addFriendHandler}>
             <img src="../../../icons/addFriend.png" alt="" className="invert" />
-            <span>Add Friend</span>
+            <span>Kết bạn</span>
           </button>
         )
       )}
@@ -106,19 +106,19 @@ export default function Friendship({ friendshipData, profileId, profile }) {
             className="invert"
             alt=""
           />
-          <span>Cancel Request</span>
+          <span>Hủy yêu cầu kết bạn</span>
         </button>
       ) : (
         friendship?.requestReceived && (
           <div className="friends_menu_wrap">
             <button className="gray_btn" onClick={() => setRespondMenu(true)}>
               <img src="../../../icons/friends.png" alt="" />
-              <span>Respond</span>
+              <span>Phản hồi</span>
             </button>
             {respondMenu && (
               <div className="open_cover_menu" ref={menu1}>
-                <div className="open_cover_menu_item hover3" onClick={conFirmRequestHandler}>Confirm</div>
-                <div className="open_cover_menu_item hover3" onClick={deleteRequestHandler}>Delete</div>
+                <div className="open_cover_menu_item hover3" onClick={conFirmRequestHandler}>Đồng ý</div>
+                <div className="open_cover_menu_item hover3" onClick={deleteRequestHandler}>Xóa yêu cầu</div>
               </div>
             )}
           </div>
@@ -127,12 +127,12 @@ export default function Friendship({ friendshipData, profileId, profile }) {
       {friendship?.following ? (
         <button className="gray_btn" onClick={unfollowHandler}>
           <img src="../../../icons/follow.png" alt=""/>
-          <span>Following</span>
+          <span>Đang Theo dõi</span>
         </button>
       ) : (
         <button className="blue_btn" onClick={followHandler}>
           <img src="../../../icons/follow.png" className="invert" alt="" />
-          <span>Follow</span>
+          <span>Theo dõi</span>
         </button>
       )}
       <button className={friendship?.friends ? "blue_btn" : "gray_btn"} onClick={openChatBox}>
@@ -141,7 +141,7 @@ export default function Friendship({ friendshipData, profileId, profile }) {
           className={friendship?.friends && "invert"}
           alt=""
         />
-        <span>Message</span>
+        <span>Nhắn tin</span>
       </button>
       {showChatBox && (
         <ChatBox user={user} friendUserId={profileId} onClose={closeChatBox} profile={profile} />

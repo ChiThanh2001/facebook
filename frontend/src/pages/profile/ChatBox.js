@@ -61,12 +61,12 @@ const ChatBox = ({ user, friendUserId, onClose, profile }) => {
       <div className="chat-input">
         <input
           type="text"
-          placeholder="Type your message..."
+          placeholder="Nhắn tin..."
           value={newMessage}
           onChange={(e) => setNewMessage(e.target.value)}
           onKeyUp={handleInbox}
         />
-        <button onClick={sendMessage} className='send_message'>Send</button>
+        <button onClick={sendMessage} className='send_message'>Gửi</button>
       </div>
     </div>
   );

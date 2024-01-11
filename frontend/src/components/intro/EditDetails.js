@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 export default function EditDetails({ setOpenEditBox, setRefreshDetails}) {
   const [inputValue, setInputvalue] = useState({
     bio:'',
-    othername:'',
+    otherName:'',
     job:'',
     workplace:'',
     highschool:'',
@@ -57,7 +57,7 @@ export default function EditDetails({ setOpenEditBox, setRefreshDetails}) {
             header="Tên khác"
             img="studies"
             placeholder="Tên khác"
-            name="othername"
+            name="otherName"
             inputHandler={inputHandler}
           />
           <Detail

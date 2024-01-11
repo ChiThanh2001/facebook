@@ -563,13 +563,13 @@ exports.search = async (req,res)=>{
 
 exports.saveProfileDetail = async (req, res) => {
   try {
-    const { bio, othername, job, highschool, relationship, living, hometown, workplace } = req.body;
+    const { bio, otherName, job, highschool, relationship, living, hometown, workplace } = req.body;
     const userId = req.user.id
     await Profile.findOneAndRemove({ user: userId })
     const result = await Profile.create({
       user:userId,
       bio,
-      othername,
+      otherName,
       job,
       workplace,
       highschool,
