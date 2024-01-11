@@ -27,10 +27,9 @@ export default function SearchAccount({ email, setEmail, error, setError, setLoa
   }
   return (
     <div className="reset_form">
-      <div className="reset_form_header">Find Your Account</div>
+      <div className="reset_form_header">Tìm tài khoản của bạn</div>
       <div className="reset_form_text">
-        Please enter your email address or mobile number to search for your
-        account.
+        Vui lòng nhập địa chỉ email để tìm kiếm tài khoản của bạn.
       </div>
       <Formik
         enableReinitialize
@@ -48,15 +47,15 @@ export default function SearchAccount({ email, setEmail, error, setError, setLoa
               type="text"
               name="email"
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Email address or phone number"
+              placeholder="Nhập địa chỉ email"
             />
             {error && <div className="error_text">{error}</div>}
             <div className="reset_form_btns">
               <Link to="/login" className="gray_btn">
-                Cancel
+                Hủy
               </Link>
               <button type="submit" className="blue_btn">
-                Search
+                Tìm kiếm
               </button>
             </div>
           </Form>

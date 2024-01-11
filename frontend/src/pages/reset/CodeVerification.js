@@ -32,9 +32,9 @@ export default function CodeVerification({ code, setCode, error, setError, setLo
 
   return (
     <div className="reset_form">
-      <div className="reset_form_header">Code verification</div>
+      <div className="reset_form_header">Mã xác minh</div>
       <div className="reset_form_text">
-        Please enter code that been sent to your email.
+        Vui lòng nhập mã đã được gửi đến email của bạn.
       </div>
       <Formik
         enableReinitialize
@@ -50,15 +50,15 @@ export default function CodeVerification({ code, setCode, error, setError, setLo
               type="text"
               name="code"
               onChange={(e) => setCode(e.target.value)}
-              placeholder="Code"
+              placeholder="Mã xác minh"
             />
             {error && <div className="error_text">{error}</div>}
             <div className="reset_form_btns">
               <Link to="/login" className="gray_btn">
-                Cancel
+                Hủy
               </Link>
               <button type="submit" className="blue_btn">
-                Continue
+                Tiếp tục
               </button>
             </div>
           </Form>

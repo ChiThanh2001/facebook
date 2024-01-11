@@ -16,16 +16,16 @@ export default function SendEmail({ userInfos, email, error, setError, setVisibl
   }
   return (
     <div className="reset_form dynamic_height">
-      <div className="reset_form_header">Reset Your Password</div>
+      <div className="reset_form_header">Đặt lại mật khẩu</div>
       <div className="reset_grid">
         <div className="reset_left">
           <div className="reset_form_text">
-            How do you want to receive the code to reset your password?
+            Bạn muốn đặt lại mật khẩu thế nào
           </div>
           <label htmlFor="email" className="hover1">
             <input type="radio" name="" id="email" checked readOnly />
             <div className="label_col">
-              <span>Send code via email</span>
+              <span>Gửi mã code qua email</span>
               <span>{userInfos?.email}</span>
             </div>
           </label>
@@ -33,7 +33,7 @@ export default function SendEmail({ userInfos, email, error, setError, setVisibl
         <div className="reset_right">
           <img src={userInfos?.picture} alt="" />
           <span>{userInfos?.email}</span>
-          <span>Facebook user</span>
+          <span>Người dùng Tvibe</span>
         </div>
       </div>
       {error && (
@@ -43,10 +43,10 @@ export default function SendEmail({ userInfos, email, error, setError, setVisibl
       )}
       <div className="reset_form_btns">
         <Link to="/login" className="gray_btn">
-          Not You ?
+          Trở lại
         </Link>
         <button className="blue_btn" onClick={sendEmail}>
-          Continue
+          Tiếp tục
         </button>
       </div>
     </div>

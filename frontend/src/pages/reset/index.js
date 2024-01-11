@@ -34,7 +34,7 @@ export default function Reset() {
   return (
     <div className="reset">
       <div className="reset_header">
-        <img src="../../../icons/facebook.svg" alt="" />
+        <img src="../../../images/my_logo.png" alt="" style={{width:"40px", height:"40px", borderRadius:"50%"}}/>
         {user ? (
           <div className="right_reset">
             <Link to="/profile">
@@ -46,12 +46,12 @@ export default function Reset() {
                 logout();
               }}
             >
-              Logout
+              Đăng xuất
             </button>
           </div>
         ) : (
           <Link to="/login" className="right_reset">
-            <button className="blue_btn">Login</button>
+            <button className="blue_btn">Đăng nhập</button>
           </Link>
         )}
       </div>

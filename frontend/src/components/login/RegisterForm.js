@@ -47,24 +47,26 @@ export default function RegisterForm({setVisible}) {
   const days = Array.from(new Array(getDays()), (val, index) => 1 + index);
   const registerValidation = Yup.object({
     first_name: Yup.string()
-      .required("What's your First name ?")
-      .min(2, "Fisrt name must be between 2 and 16 characters.")
-      .max(16, "Fisrt name must be between 2 and 16 characters.")
-      .matches(/^[aA-zZ]+$/, "Numbers and special characters are not allowed."),
+      .required("Tên của bạn là gì?")
+      .min(2, "Tên của bạn phải có độ dài từ 2 đến 16 ký tự.")
+      .max(16, "Tên của bạn phải có độ dài từ 2 đến 16 ký tự.")
+      .matches(/^[aA-zZ]+$/, "Số và kí tự đặc biệt không được cho phép."),
     last_name: Yup.string()
-      .required("What's your Last name ?")
-      .min(2, "Last name must be between 2 and 16 characters.")
-      .max(16, "Last name must be between 2 and 16 characters.")
-      .matches(/^[aA-zZ]+$/, "Numbers and special characters are not allowed."),
+      .required("Họ của bạn là gì?")
+      .min(2, "Họ của bạn phải có độ dài từ 2 đến 16 ký tự.")
+      .max(16, "Họ của bạn phải có độ dài từ 2 đến 16 ký tự.")
+      .matches(/^[aA-zZ]+$/, "Số và kí tự đặc biệt không được cho phép."),
     email: Yup.string()
       .required(
-        "You'll need this when you log in and if you ever need to reset your password."
+        "Bạn sẽ cần trường này nếu sau này bạn cần tìm lại mật khẩu của mình."
       )
-      .email("Enter a valid email address."),
+      .email("Nhập 1 địa chỉ email hợp lệ."),
     password: Yup.string()
-      .required()
-      .min(6, "Password must be atleast 6 characters.")
-      .max(36, "Password can't be more than 36 characters"),
+      .required(
+        "Không được để trống mật khẩu"
+      )
+      .min(6, "Mật khẩu phải có độ dài tối thiếu là 6 ký tự.")
+      .max(36, "Mật khẩu không được dài hơn 36 ký tự"),
   });
   const [dateError, setDateError] = useState("");
   const [genderError, setGenderError] = useState("");
@@ -102,8 +104,8 @@ export default function RegisterForm({setVisible}) {
       <div className="register">
         <div className="register_header">
           <i className="exit_icon" onClick={()=> setVisible(false)}></i>
-          <span>Sign Up</span>
-          <span>it's quick and easy</span>
+          <span>Đăng ký</span>
+          <span>Điền thông tin của bạn vào các trường bên dưới</span>
         </div>
         <Formik
           enableReinitialize
@@ -148,13 +150,13 @@ export default function RegisterForm({setVisible}) {
               <div className="reg_line">
                 <RegisterInput
                   type="text"
-                  placeholder="First name"
+                  placeholder="Tên"
                   name="first_name"
                   onChange={handleRegisterChange}
                 />
                 <RegisterInput
                   type="text"
-                  placeholder="Surname"
+                  placeholder="Họ"
                   name="last_name"
                   onChange={handleRegisterChange}
                 />
@@ -162,7 +164,7 @@ export default function RegisterForm({setVisible}) {
               <div className="reg_line">
                 <RegisterInput
                   type="text"
-                  placeholder="Mobile number or email address"
+                  placeholder="Địa chỉ email"
                   name="email"
                   onChange={handleRegisterChange}
                 />
@@ -170,14 +172,14 @@ export default function RegisterForm({setVisible}) {
               <div className="reg_line">
                 <RegisterInput
                   type="password"
-                  placeholder="New password"
+                  placeholder="Mật khẩu"
                   name="password"
                   onChange={handleRegisterChange}
                 />
               </div>
               <div className="reg_col">
                 <div className="reg_line_header">
-                  Date of birth <i className="info_icon"></i>
+                  Ngày sinh <i className="info_icon"></i>
                 </div>
                 <DateOfBirthSelect
                   bDay={bDay}
@@ -192,7 +194,7 @@ export default function RegisterForm({setVisible}) {
               </div>
               <div className="reg_col">
                 <div className="reg_line_header">
-                  Gender <i className="info_icon"></i>
+                  Giới tính <i className="info_icon"></i>
                 </div>
 
                 <GenderSelect
@@ -201,10 +203,9 @@ export default function RegisterForm({setVisible}) {
                 />
               </div>
               <div className="reg_infos">
-                By clicking Sign Up, you agree to our{" "}
-                <span>Terms, Data Policy &nbsp;</span>
-                and <span>Cookie Policy.</span> You may receive SMS
-                notifications from us and can opt out at any time.
+                Bằng cách nhấp vào Đăng ký, bạn đồng ý với{" "}
+                <span>Điều khoản, Chính sách dữ liệu &nbsp;</span>
+                và <span>Chính sách Cookie.</span>
               </div>
               <div className="reg_btn_wrapper">
                 <button className="blue_btn open_signup">Sign Up</button>

@@ -37,7 +37,7 @@ export default function ChangePassword({
         password
       })
       setError('')
-      setSuccess(data.message)
+      setSuccess("Đổi mật khẩu thành công")
       setLoading(false)
       setTimeout(()=>{
         navigate('/login')
@@ -51,8 +51,8 @@ export default function ChangePassword({
 
   return (
     <div className="reset_form" style={{ height: "310px" }}>
-      <div className="reset_form_header">Change Password</div>
-      <div className="reset_form_text">Pick a strong password</div>
+      <div className="reset_form_header">Đổi mật khẩu</div>
+      <div className="reset_form_text">Tạo lại mật khẩu</div>
       <Formik
         enableReinitialize
         initialValues={{
@@ -81,10 +81,10 @@ export default function ChangePassword({
             {success && <div className="success_text">{success}</div>}
             <div className="reset_form_btns">
               <Link to="/login" className="gray_btn">
-                Cancel
+                Hủy
               </Link>
               <button type="submit" className="blue_btn">
-                Continue
+                Tiếp tục
               </button>
             </div>
           </Form>

@@ -31,10 +31,10 @@ export default function LoginForm({setVisible}) {
   };
   const loginValidation = Yup.object({
     email: Yup.string()
-      .required("Email address is required.")
-      .email("Must be a valid email.")
+      .required("Không được bỏ trống trường này")
+      .email("Email không hợp lệ")
       .max(100),
-    password: Yup.string().required("Password is required"),
+    password: Yup.string().required("Không được bỏ trống trường này"),
   });
 
   const loginSubmit = async()=>{
@@ -45,7 +45,7 @@ export default function LoginForm({setVisible}) {
       navigate('/')
     } catch (error) {
       setLoading(false)
-      setError(error.response.data.message)
+      setError("Sai tài khoản hoặc mật khẩu")
     }
   }
 
@@ -74,31 +74,31 @@ export default function LoginForm({setVisible}) {
                 <LoginInput
                   type="text"
                   name="email"
-                  placeholder="Email address or phone number"
+                  placeholder="Nhập email của bạn"
                   onChange={handleLoginChange}
                 />
                 <LoginInput
                   type="password"
                   name="password"
-                  placeholder="Password"
+                  placeholder="Nhập mật khẩu"
                   onChange={handleLoginChange}
                   bottom
                 />
                 <button type="submit" className="blue_btn">
-                  Log In
+                  Đăng nhập
                 </button>
               </Form>
             )}
           </Formik>
           <Link to="/reset" className="forgot_password">
-            Forgotten password?
+            Quên mật khẩu ?
           </Link>
           <div className="sign_splitter"></div>
           {error && <div className='error_text'>{error}</div>}
-          <button className="blue_btn open_signup" onClick={()=>setVisible(true)}>Create Account</button>
+          <button className="blue_btn open_signup" onClick={()=>setVisible(true)}>Tạo tài khoản</button>
         </div>
         <Link to="/" className="sign_extra">
-          <b>Create a Page</b> for a celebrity, brand or business.
+          <b>Tvibe</b> hãy nghĩ theo cách của bạn
         </Link>
       </div>
     </div>
