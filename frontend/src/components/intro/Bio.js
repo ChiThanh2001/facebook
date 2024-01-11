@@ -14,7 +14,7 @@ export default function Bio({
       ></textarea>
       <div className="flex">
         <div className="flex flex_left">
-          <i className="public_icon"></i>Public
+          <i className="public_icon"></i>Công khai
         </div>
       </div>
     </div>

@@ -15,17 +15,17 @@ export default function Cover({ cover, user, eachUserProfile }) {
             onClick={() => setShowCoverMenu((prev) => !prev)}
           >
             <i className="camera_filled_icon"></i>
-            Add Cover Photo
+            Thêm ảnh bìa
           </div>
           {showCoverMenu && (
             <div className="open_cover_menu" ref={menuRef}>
               <div className="open_cover_menu_item hover3">
                 <i className="photo_icon"></i>
-                Select Photo
+                Chọn ảnh
               </div>
               <div className="open_cover_menu_item hover3">
                 <i className="upload_icon"></i>
-                Upload Photo
+                Tải ảnh lên
               </div>
             </div>
           )}

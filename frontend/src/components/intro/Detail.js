@@ -8,7 +8,7 @@ export default function Detail({ header, placeholder, name, inputHandler}) {
       <div className="add_details_flex ">
           <>
             <i className="rounded_plus_icon"></i>
-            Add {header}
+            Thêm {header}
           </>
       </div>
       <Bio placeholder={placeholder} name={name} inputHandler={inputHandler} />

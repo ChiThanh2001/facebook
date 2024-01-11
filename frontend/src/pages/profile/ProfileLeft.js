@@ -17,12 +17,12 @@ export default function ProfileLeft({ user, refreshDetails, profileId }){
     return (
         <div className="left_container">
             <div className="introduce">
-                <span class="introduce_title">Introduce</span>
+                <span class="introduce_title">Giới thiệu</span>
                 <div className="detail">
                     <span>{!details?.bio ? 'Bạn chưa đặt thông tin về bio' : details.bio}</span>
                 </div>
                 <div className="button_edit">
-                    <button>Edit Profile</button>
+                    <button>Chỉnh sửa</button>
                 </div>
                 <div className="info_profile">
                     <img src="../../../icons/job.png" />

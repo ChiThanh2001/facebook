@@ -1,88 +1,88 @@
 export const left = [
   {
-    text: "Find friends",
+    text: "Tìm bạn bè",
     img: "friends",
   },
   {
-    text: "Memories",
+    text: "Kí ức",
     img: "memories",
   },
   {
-    text: "Groups",
+    text: "Nhóm",
     img: "groups",
-    notification: "5 new",
+    notification: "5 mới",
   },
   {
-    text: "Marketplace",
+    text: "Thị trường",
     img: "marketplace",
   },
   {
-    text: "Watch",
+    text: "Xem",
     img: "watch",
-    notification: "9 new videos",
+    notification: "9 video mới",
   },
   {
-    text: "Saved",
+    text: "Đã lưu",
     img: "saved",
   },
   {
-    text: "Pages",
+    text: "Trang",
     img: "pages",
   },
   {
-    text: "Events",
+    text: "Sự kiện",
     img: "events",
   },
   {
-    text: "Ad Center",
+    text: "Trung tâm Quảng cáo",
     img: "ad",
   },
   {
-    text: "Ads Manager",
+    text: "Quản lý Quảng cáo",
     img: "ads",
   },
   {
-    text: "Campus",
+    text: "Khuôn viên",
     img: "campus",
   },
   {
-    text: "Climate science center",
+    text: "Trung tâm Khoa học Khí hậu",
     img: "climate",
   },
   {
-    text: "Community Help",
+    text: "Hỗ trợ Cộng đồng",
     img: "community",
   },
   {
-    text: "COVID-19 Information Centrer",
+    text: "Trung tâm Thông tin COVID-19",
     img: "covid",
   },
   {
-    text: "Emotional health",
+    text: "Sức khỏe Tâm lý",
     img: "emotional",
   },
   {
-    text: "Facebook Pay",
+    text: "TVibe Pay",
     img: "pay",
   },
   {
-    text: "Favorites",
+    text: "Yêu thích",
     img: "fav",
   },
   {
-    text: "Fundraisers",
+    text: "Quyên góp",
     img: "fund",
   },
   {
-    text: "Gaming Video",
+    text: "Video Game",
     img: "gaming",
   },
   {
-    text: "Jobs",
+    text: "Việc làm",
     img: "jobs",
   },
   {
-    text: "Live videos",
+    text: "Video trực tiếp",
     img: "live",
   },
   {
@@ -94,22 +94,23 @@ export const left = [
     img: "messkids",
   },
   {
-    text: "Most recent",
+    text: "Mới nhất",
     img: "recent",
   },
   {
-    text: "Play Games",
+    text: "Chơi trò chơi",
     img: "play",
   },
   {
-    text: "Recent ad activity",
+    text: "Hoạt động quảng cáo gần đây",
     img: "recentad",
   },
   {
-    text: "Weather",
+    text: "Thời tiết",
     img: "weather",
   }
 ];
+
 export const stories = [
   {
     profile_picture: "../../stories/profile1.jpg",

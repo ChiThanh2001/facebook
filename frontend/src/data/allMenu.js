@@ -1,161 +1,156 @@
 export const menu = [
   {
-    name: "Campus",
+    name: "Khuôn viên",
     icon: "campus",
-    description: "A unique, exclusive space for college students on Facebook.",
+    description: "Một không gian duy nhất và độc đáo dành cho sinh viên trên Facebook.",
   },
   {
-    name: "Events",
+    name: "Sự kiện",
     icon: "events",
-    description:
-      "Organize or find events and other things to do online and nearby.",
+    description: "Tổ chức hoặc tìm kiếm sự kiện và những hoạt động khác trực tuyến và gần đây.",
   },
   {
-    name: "Find Friends",
+    name: "Tìm bạn bè",
     icon: "friends",
-    description: "Search for friends or people you may know.",
+    description: "Tìm kiếm bạn bè hoặc những người bạn có thể biết.",
   },
   {
-    name: "Groups",
+    name: "Nhóm",
     icon: "groups",
-    description: "Connect with people who share your interests.",
+    description: "Kết nối với những người có cùng sở thích với bạn.",
   },
   {
-    name: "News Feed",
+    name: "Bảng tin",
     icon: "feed",
-    description: "See relevant posts from people and Pages you follow.",
+    description: "Xem các bài đăng liên quan từ những người và Trang bạn đang theo dõi.",
   },
   {
-    name: "Pages",
+    name: "Trang",
     icon: "pages",
-    description: "Discover and connect with businesses on Facebook.",
+    description: "Khám phá và kết nối với doanh nghiệp trên Facebook.",
   },
   {
-    name: "Gaming Video",
+    name: "Video Game",
     icon: "gaming",
-    description: "Watch and connect with your favorite games and streamers.",
+    description: "Xem và kết nối với trò chơi và người chơi yêu thích của bạn.",
   },
   {
-    name: "Play Games",
+    name: "Chơi trò chơi",
     icon: "play",
-    description: "Play your favorite games.",
+    description: "Chơi những trò chơi yêu thích của bạn.",
   },
   {
-    name: "Watch",
+    name: "Xem",
     icon: "watch",
-    description:
-      "A video destination personalized to your interests and connections.",
+    description: "Một điểm đến video được cá nhân hóa theo sở thích và mối quan hệ của bạn.",
   },
   {
     name: "Facebook Pay",
     icon: "pay",
-    description: "A seamless, secure way to pay on the apps you already use.",
+    description: "Một cách thanh toán mượt mà và an toàn trên các ứng dụng bạn đã sử dụng.",
   },
   {
-    name: "Marketplace",
+    name: "Thị trường",
     icon: "marketplace",
-    description: "Buy and sell in your community.",
+    description: "Mua bán trong cộng đồng của bạn.",
   },
   {
-    name: "Recent Ad Activity",
+    name: "Hoạt động quảng cáo gần đây",
     icon: "recent",
-    description: "See all the ads you interacted with on Facebook.",
+    description: "Xem tất cả quảng cáo bạn tương tác trên Facebook.",
   },
   {
-    name: "Memories",
+    name: "Kí ức",
     icon: "memories",
-    description: "Browse your old photos, videos and posts on Facebook.",
+    description: "Duyệt qua ảnh cũ, video và bài đăng của bạn trên Facebook.",
   },
   {
-    name: "Saved",
+    name: "Đã lưu",
     icon: "saved",
-    description: "Find posts, photos and videos that you saved for later.",
+    description: "Tìm bài đăng, ảnh và video bạn đã lưu để xem sau.",
   },
   {
-    name: "Weather",
+    name: "Thời tiết",
     icon: "weather",
-    description:
-      "Check your local forecast and sign up for daily weather notifications.",
+    description: "Kiểm tra dự báo địa phương và đăng ký nhận thông báo thời tiết hàng ngày.",
   },
   {
-    name: "Ads",
+    name: "Quảng cáo",
     icon: "ads",
-    description: "Create, manage and track the performance of your ads.",
+    description: "Tạo, quản lý và theo dõi hiệu suất của quảng cáo của bạn.",
   },
   {
-    name: "Jobs",
+    name: "Việc làm",
     icon: "jobs",
-    description: "Find a job that's right for you.",
+    description: "Tìm một công việc phù hợp với bạn.",
   },
   {
-    name: "Climate science center",
+    name: "Trung tâm Khoa học Khí hậu",
     icon: "climate",
-    description: "Learn about climate change and its effects.",
+    description: "Tìm hiểu về biến đổi khí hậu và ảnh hưởng của nó.",
   },
   {
-    name: "COVID-19 Information Center",
+    name: "Trung tâm Thông tin COVID-19",
     icon: "covid",
-    description:
-      "See the latest prevention tips, community resources and updates from health organizations.",
+    description: "Xem các mẹo phòng ngừa mới nhất, nguồn lực cộng đồng và cập nhật từ tổ chức y tế.",
   },
   {
-    name: "Community Help",
+    name: "Hỗ trợ Cộng đồng",
     icon: "community",
-    description:
-      "Get involved in your community by creating a drive, requesting or offering help or volunteering.",
+    description: "Tham gia vào cộng đồng của bạn bằng cách tạo chiến dịch, yêu cầu hoặc cung cấp sự giúp đỡ hoặc tình nguyện.",
   },
   {
-    name: "Fundraisers",
+    name: "Quyên góp",
     icon: "fundraisers",
-    description: "Donate and raise money for nonprofits and personal causes.",
+    description: "Quyên góp và huy động tiền cho tổ chức phi lợi nhuận và nguyên nhân cá nhân.",
   },
   {
     name: "Messenger",
     icon: "messenger",
-    description: "Chat instantly with your friends and connections.",
+    description: "Trò chuyện ngay lập tức với bạn bè và người kết nối của bạn.",
   },
   {
     name: "Messenger Kids",
     icon: "messkids",
-    description: "Let kids message with close friends and family.",
+    description: "Cho phép trẻ con gửi tin nhắn với bạn bè và gia đình gần.",
   },
 ];
+
 export const create = [
   {
-    name: "Post",
+    name: "Đăng bài",
     icon: "m_post_icon",
   },
   {
-    name: "Story",
+    name: "Câu chuyện",
     icon: "m_story_icon",
   },
   {
-    name: "Room",
+    name: "Phòng chờ",
     icon: "m_room_icon",
   },
   {
-    name: "Page",
+    name: "Trang",
     icon: "m_page_icon",
   },
-
   {
-    name: "Ad",
+    name: "Quảng cáo",
     icon: "m_ad_icon",
   },
   {
-    name: "Group",
+    name: "Nhóm",
     icon: "m_group_icon",
   },
   {
-    name: "Event",
+    name: "Sự kiện",
     icon: "m_event_icon",
   },
   {
-    name: "Marketplace Listing",
+    name: "Thị trường",
     icon: "m_post_mar",
   },
   {
-    name: "Job",
+    name: "Việc làm",
     icon: "m_post_job",
   },
 ];

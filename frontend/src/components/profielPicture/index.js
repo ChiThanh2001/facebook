@@ -42,7 +42,7 @@ export default function ProfilePicture({ setShow, setRefresh }) {
           <div className="small_circle" onClick={() => setShow(false)}>
             <i className="exit_icon"></i>
           </div>
-          <span>Update profile picture</span>
+          <span>Cập nhật ảnh cá nhân</span>
         </div>
         <div className="update_picture_wrap">
           <div className="update_picture_buttons">
@@ -51,11 +51,7 @@ export default function ProfilePicture({ setShow, setRefresh }) {
               onClick={() => refInput.current.click()}
             >
               <i className="plus_icon filter_blue"></i>
-              Upload photo
-            </button>
-            <button className="gray_btn">
-              <i className="frame_icon"></i>
-              Add frame
+              Tải ảnh
             </button>
           </div>
         </div>

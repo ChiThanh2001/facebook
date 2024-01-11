@@ -39,72 +39,72 @@ export default function EditDetails({ setOpenEditBox, setRefreshDetails}) {
           <div className="small_circle" onClick={cancelHandler}>
             <i className="exit_icon"></i>
           </div>
-          <span>Edit Details</span>
+          <span>Chỉnh sửa chi tiết</span>
         </div>
         <div className="details_wrapper scrollbar">
           <div className="details_col">
-            <span>Customize Your Intro</span>
-            <span>Details you select will be public</span>
+            <span>Chỉnh sửa thông tin cá nhân của bạn</span>
+            <span>Thông tin của bạn sẽ được công khai</span>
           </div>
           <Detail
-            header="Bio"
+            header="Giới thiệu"
             img="studies"
-            placeholder="add Bio"
+            placeholder="Giới thiệu"
             name="bio"
             inputHandler={inputHandler}
           />
           <Detail
-            header="Other Name"
+            header="Tên khác"
             img="studies"
-            placeholder="add other name"
+            placeholder="Tên khác"
             name="othername"
             inputHandler={inputHandler}
           />
           <Detail
-            header="Job"
+            header="Công việc"
             img="studies"
-            placeholder="add Job"
+            placeholder="Công việc"
             name="job"
             inputHandler={inputHandler}
           />
           <Detail
-            header="Work Place"
+            header="Nơi làm việc"
             img="studies"
-            placeholder="add Work Place"
+            placeholder="Nơi làm việc"
             name="workplace"
             inputHandler={inputHandler}
           />
           <Detail
-            header="highschool"
+            header="Trường học"
             img="studies"
-            placeholder="add highschool"
+            placeholder="Trường học"
             name="highschool"
             inputHandler={inputHandler}
           />
           <Detail
-            header="Relationship"
+            header="Mối quan hệ"
             img="studies"
-            placeholder="add Relationship"
+            placeholder="Mối quan hệ"
             name="relationship"
             inputHandler={inputHandler}
           />
           <Detail
-            header="Living"
+            header="sinh sống"
             img="studies"
-            placeholder="add Living"
+            placeholder="sinh sống"
             name="living"
             inputHandler={inputHandler}
           />
           <Detail
-            header="Hometown"
+            header="Quê nhà"
             img="studies"
-            placeholder="add Hometown"
+            placeholder="Quê nhà"
             name="hometown"
             inputHandler={inputHandler}
           />
           <div className="flex flex_right">
-            <button className="gray_btn" onClick={ cancelHandler }>Cancel</button>
-            <button className="blue_btn" onClick={ saveHandler }>Save</button>
+            <button className="gray_btn" onClick={ cancelHandler }>Hủy</button>
+            <button className="blue_btn" onClick={ saveHandler }>Lưu</button>
           </div>
         </div>
       </div>

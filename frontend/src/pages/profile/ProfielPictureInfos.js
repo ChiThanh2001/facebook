@@ -36,13 +36,9 @@ export default function ProfielPictureInfos({ profile, setRefresh, eachUserProfi
       </div>
       {user.id === eachUserProfile._id ? 
         (<div className="profile_w_right">
-          <div className="blue_btn">
-            <img src="../../../icons/plus.png" alt="" className="invert" />
-            <span>Add to story</span>
-          </div>
           <div className="gray_btn">
             <i className="edit_icon"></i>
-            <span onClick={()=>setOpenEditBox(true)}>Edit profile</span>
+            <span onClick={()=>setOpenEditBox(true)}>Chỉnh sửa thông tin</span>
           </div>
         </div>) : <Friendship friendshipData={profile.friendship} profileId={profile._id} profile={profile}/>
       }

@@ -22,13 +22,13 @@ const FriendRequest = () => {
         <>
             <Header page="friendRequest" />
             <div className='top'>
-                List of friend request
+                Danh sách lời mời kết bạn
             </div>
             <div className='request_page'>
                 {requestInfo.length > 0 ? (
                     requestInfo.map((request, index)=> <RequestDetail key={index} request={request} user={user} setRefresh={setRefresh} />)
                 ):(
-                    <div className='empty_request'>You do not have any friend request</div>
+                    <div className='empty_request'>Bạn không có lời mời kết bạn nào</div>
                 )}
             </div>
         </>

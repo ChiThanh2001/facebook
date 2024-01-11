@@ -114,11 +114,11 @@ export default function UpdateProfilePicture({ setImage, image, setError, setSho
         <div className="small_circle" onClick={() => setImage("")}>
           <i className="exit_icon"></i>
         </div>
-        <span>Update profile picture</span>
+        <span>Cập nhật ảnh cá nhân</span>
       </div>
       <div className="update_image_desc">
         <textarea
-          placeholder="Description"
+          placeholder="Mô tả"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           className="textarea_blue details_input"
@@ -159,20 +159,17 @@ export default function UpdateProfilePicture({ setImage, image, setError, setSho
       </div>
       <div className="flex_up">
         <div className="gray_btn" onClick={() => getCroppedImage("show")}>
-          <i className="crop_icon"></i>Crop photo
-        </div>
-        <div className="gray_btn">
-          <i className="temp_icon"></i>Make Temporary
+          <i className="crop_icon"></i>Cắt ảnh
         </div>
       </div>
       <div className="flex_p_t">
         <i className="public_icon"></i>
-        Your profile picture is public
+        Ảnh đại diện của bạn sẽ đăng công khai
       </div>
       <div className="update_submit_wrap">
-        <div className="blue_link" onClick={() => setImage("")}>Cancel</div>
+        <div className="blue_link" onClick={() => setImage("")}>Hủy</div>
         <button className="blue_btn" onClick={() => updateProfielPicture()} disable={loading}>
-          {loading ? <PulseLoader color="#fff" size={5} /> : "Save"}
+          {loading ? <PulseLoader color="#fff" size={5} /> : "Lưu"}
         </button>
       </div>
     </div>

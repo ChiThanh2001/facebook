@@ -81,7 +81,7 @@ export default function CreatePostPopup({ user, setVisible, setRefresh }) {
             </div>
             <div className="box_privacy">
               <img src="../../../icons/public.png" alt="" />
-              <span>Public</span>
+              <span>Công khai</span>
               <i className="arrowDown_icon"></i>
             </div>
           </div>
@@ -109,7 +109,7 @@ export default function CreatePostPopup({ user, setVisible, setRefresh }) {
         )}
         <AddToYourPost setShowPrev={setShowPrev}/>
         <button className="post_submit" onClick={postSubmit} disabled={loading}>
-          {loading ? <PulseLoader color="#fff" size={5} /> : "Post"}
+          {loading ? <PulseLoader color="#fff" size={5} /> : "Đăng bài"}
         </button>
       </div>
     </div>

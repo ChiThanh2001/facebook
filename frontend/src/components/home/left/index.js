@@ -26,7 +26,7 @@ export default function LeftHome({ user }) {
         <div className="small_circle">
           <ArrowDown1 />
         </div>
-        <span>Show more</span>
+        <span>Xem thêm</span>
       </div>}
       {visible && left.slice(8).map((link, i) => (
         <LeftLink

@@ -37,7 +37,7 @@ export default function ImagePreview({
             <div className="preview_actions">
               <button className="hover1">
                 <i className="edit_icon"></i>
-                Edit
+                Chỉnh sửa
               </button>
               <button
                 className="hover1"
@@ -46,7 +46,7 @@ export default function ImagePreview({
                 }}
               >
                 <i className="addPhoto_icon"></i>
-                Add Photos/Videos
+                Thêm ảnh
               </button>
             </div>
             <div
@@ -98,18 +98,10 @@ export default function ImagePreview({
               <div className="add_circle">
                 <i className="addPhoto_icon"></i>
               </div>
-              <span>Add Photos/Videos</span>
-              <span>or drag and drop</span>
+              <span>Thêm ảnh</span>
             </div>
           </div>
         )}
-        <div className="add_pics_inside2">
-          <div className="add_circle">
-            <i className="phone_icon"></i>
-          </div>
-          <div className="mobile_text">Add phots from your mobile device.</div>
-          <span className="addphone_btn">Add</span>
-        </div>
       </div>
     </div>
   );

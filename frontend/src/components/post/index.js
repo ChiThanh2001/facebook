@@ -89,9 +89,9 @@ export default function Post({ post, setRefresh }) {
               {post?.user?.first_name} {post?.user?.last_name}
               <div className="updated_p">
                 {post?.type == "profilePicture" &&
-                  `updated ${
-                    post?.user?.gender === "male" ? "his" : "her"
-                  } profile picture`}
+                  `đã cập nhật ảnh cá nhân của ${
+                    post?.user?.gender === "male" ? "anh ấy" : "cô ấy"
+                  }`}
                 {post?.type == "cover" &&
                   `updated ${
                     post?.user?.gender === "male" ? "his" : "her"
@@ -134,8 +134,8 @@ export default function Post({ post, setRefresh }) {
       <div className="post_bottom">
           <div className="post_info">
             <div className="react_total">{reactInfo} react</div>
-            <div className="comment">{commentAmount} comment</div>
-            <div className="share">0 share</div>
+            <div className="comment">{commentAmount} bình luận</div>
+            <div className="share">0 chia sẻ</div>
           </div>
           <div className="post_react">
             {/* <ReactPopup visible={visible} setVisible={setVisible}/> */}
@@ -150,17 +150,17 @@ export default function Post({ post, setRefresh }) {
             }}>
               <ReactPopup visible={visible} setVisible={setVisible} postId={post?._id} user={user} check={check} setCheck={setCheck} />
               {check ? <img src={`../../../reacts/${check}.svg`} alt='' className="react_icon"/>:<i className="like_icon"></i>}
-              {check ? <span>{check}</span> :<span>Like</span>}
+              {check ? <span>{check}</span> :<span>Thích</span>}
             </div>
             <div className="post_action" onClick={()=>{
                 setVisibleComment(prev => !prev)
               }}>
               <i className="comment_icon"></i>
-              <span>Comment</span>
+              <span>Bình luận</span>
             </div>
             <div className="post_action">
               <i className="share_icon"></i>
-              <span>Share</span>
+              <span>Chia sẻ</span>
             </div>
           </div>
           {visibleComment && (<div className="post_comment">
@@ -169,7 +169,7 @@ export default function Post({ post, setRefresh }) {
                 <img src={user?.picture} />
               </div>
               <div className="box_chat">
-                <textarea onKeyUp={handleComment} type="text" className="input_chat" placeholder="What are you thinking..." ref={textRef} value={text} onChange={(e) => setText(e.target.value)}/>
+                <textarea onKeyUp={handleComment} type="text" className="input_chat" placeholder="Bạn đang nghĩ gì..." ref={textRef} value={text} onChange={(e) => setText(e.target.value)}/>
                 <div className="list-icon">
                   <div className="comment-circle-icon">
                     <i className="emoji_icon" onClick={()=>setVisibleEmoji(prev => !prev)}></i>

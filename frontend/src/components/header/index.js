@@ -55,7 +55,7 @@ export default function Header({ page, setRefresh }) {
           <Search color={color} />
           <input
             type="text"
-            placeholder="Search Facebook"
+            placeholder="Tìm kiếm"
             className="hide_input"
           />
         </div>

@@ -8,7 +8,7 @@ export default function CreatePost({user, setVisible, eachUserProfile, margin })
         <div className="createPost_header">
           <img src={eachUserProfile?.picture || user?.picture} alt="error" />
           <div className="open_post hover2" onClick={ ()=> setVisible(true) }>
-            What's on your mind, {eachUserProfile?.first_name}
+            Hãy đăng gì đó đi, {eachUserProfile?.first_name}
           </div>
         </div>
         <div className="create_splitter"></div>
@@ -19,11 +19,11 @@ export default function CreatePost({user, setVisible, eachUserProfile, margin })
           </div>
           <div className="createPost_icon hover3">
             <Photo color="#4bbf67" />
-            Photo/Video
+            Ảnh/Video
           </div>
           <div className="createPost_icon hover3">
             <Feeling color="#f7b928" />
-            Feeling/Activity
+            Cảm giác/Hoạt động
           </div>
         </div>
       </div>
@@ -32,7 +32,7 @@ export default function CreatePost({user, setVisible, eachUserProfile, margin })
         <div className="createPost_header">
           <img src={eachUserProfile?.picture || user?.picture} alt="error" />
           <div className="open_post hover2" onClick={ ()=> setVisible(true) }>
-            What's on your mind, {user?.first_name}
+            Hãy đăng gì đó đi, {user?.first_name}
           </div>
         </div>
         <div className="create_splitter"></div>
@@ -43,11 +43,11 @@ export default function CreatePost({user, setVisible, eachUserProfile, margin })
           </div>
           <div className="createPost_icon hover3">
             <Photo color="#4bbf67" />
-            Photo/Video
+            Ảnh/Video
           </div>
           <div className="createPost_icon hover3">
             <Feeling color="#f7b928" />
-            Feeling/Activity
+            Cảm giác/Hoạt động
           </div>
         </div>
       </div>

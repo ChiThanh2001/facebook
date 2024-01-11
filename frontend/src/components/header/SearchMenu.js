@@ -52,7 +52,7 @@ export default function SearchMenu({ color, setShowSearchMenu, token }) {
           )}
           <input
             type="text"
-            placeholder="Search Facebook"
+            placeholder="Tìm kiếm"
             ref={input}
             value={searchTerm}
             onChange={(e)=>{setSearchTerm(e.target.value)}}
@@ -67,8 +67,8 @@ export default function SearchMenu({ color, setShowSearchMenu, token }) {
         </div>
       </div>
       <div className="search_history_header">
-        <span>Recent searches</span>
-        <a>Edit</a>
+        <span>Tìm kiếm gần đây</span>
+        <a>Chỉnh sửa</a>
       </div>
       <div className="search_history"></div>
       <div className="search_results scrollbar">
