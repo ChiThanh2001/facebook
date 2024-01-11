@@ -36,10 +36,6 @@ const userSchema = mongoose.Schema(
       type: String,
       default: "",
     },
-    cover: {
-      type: String,
-      trim: true,
-    },
     gender: {
       type: String,
       required: [true, "gender is required"],

@@ -6,7 +6,7 @@ const postSchema = new mongoose.Schema(
   {
     type: {
       type: String,
-      enum: ["profilePicture", "cover", null],
+      enum: ["profilePicture", null],
       default: null,
     },
     text: {
@@ -19,9 +19,6 @@ const postSchema = new mongoose.Schema(
       type: ObjectId,
       ref: "User",
       required: true,
-    },
-    background: {
-      type: String,
     },
     comments: [
       {
