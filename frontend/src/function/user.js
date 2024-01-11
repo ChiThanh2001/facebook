@@ -195,3 +195,57 @@ export const getChatMessages = async (chatId, token) => {
     return error.response.data.message;
   }
 };
+
+export const saveProfileDetail = async (details, token) => {
+  try {
+    const {
+      bio,
+      othername,
+      job,
+      workplace,
+      highschool,
+      living,
+      hometown,
+      relationship,
+    } = details;
+
+    const { data } = await axios.post(
+      `${process.env.REACT_APP_BACKEND_URL}/saveProfileDetail`,
+      {
+        bio,
+        othername,
+        job,
+        workplace,
+        highschool,
+        living,
+        hometown,
+        relationship,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    return data;
+  } catch (error) {
+    console.error("Error fetching messages:", error);
+    return error.response.data.message;
+  }
+};
+
+export const getProfileDetail = async (profileId,token) => {
+  try {
+    const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/getProfileDetail/${profileId}`,{
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    
+    return data ;
+  } catch (error) {
+    console.error('Error fetching messages:', error)
+    return error.response.data.message;
+  }
+}

@@ -7,6 +7,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { generateCode } = require("../helpers/generateCode");
 const Message = require("../models/Message");
+const Profile = require("../models/Profile");
 
 exports.register = async (req, res) => {
   try {
@@ -559,3 +560,37 @@ exports.search = async (req,res)=>{
     res.status(500).json({ message: error.message });
   }
 }
+
+exports.saveProfileDetail = async (req, res) => {
+  try {
+    const { bio, othername, job, highschool, relationship, living, hometown, workplace } = req.body;
+    const userId = req.user.id
+    await Profile.findOneAndRemove({ user: userId })
+    const result = await Profile.create({
+      user:userId,
+      bio,
+      othername,
+      job,
+      workplace,
+      highschool,
+      living,
+      hometown,
+      relationship,
+    });
+
+    return res.status(200).json(result)
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+exports.getProfileDetail = async (req, res) => {
+  try {
+    const userId = req.params.userId
+    const result = await Profile.findOne({ user: userId })
+
+    return res.status(200).json(result)
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

@@ -14,10 +14,13 @@ import CreatePostPopup from "../../components/createPostPopup";
 import { useState } from "react";
 import Post from "../../components/post";
 import { getUserPosts } from "../../function/post";
+import Intro from "../../components/intro";
 
 export default function Profile() {
   const [visible, setVisible] = useState(false)
   const [refresh, setRefresh] = useState(false)
+  const [refreshDetails, setRefreshDetails] = useState(false)
+  const [openEditBox, setOpenEditBox] = useState(false)
   const [eachUserProfile, setEachUserProfile] = useState({})
   
   const { username } = useParams();
@@ -86,23 +89,22 @@ export default function Profile() {
     userPosts()
   },[refresh])
 
-  console.log('rerender')
-
   return (
     <div className="profile">
       <Header page="profile" setRefresh={setRefresh} />
+      {openEditBox && <Intro openEditBox={openEditBox} setOpenEditBox={setOpenEditBox} setRefreshDetails={setRefreshDetails} />}
       <div className="profile_container">
         <div className="profile_top">
           <div className="profile_container">
             <Cover cover={profile.cover} user={user} eachUserProfile={eachUserProfile}/>
-            <ProfielPictureInfos profile={profile} setRefresh={setRefresh} eachUserProfile={eachUserProfile} getProfile={getProfile}/>
+            <ProfielPictureInfos profile={profile} setRefresh={setRefresh} eachUserProfile={eachUserProfile} getProfile={getProfile} setOpenEditBox={setOpenEditBox} />
             <ProfileMenu />
           </div>
         </div>
         <div className="profile_body">
           {visible && <CreatePostPopup user={user} setVisible={setVisible} setRefresh={setRefresh}/>}
           <div className="body_left">
-            <ProfileLeft />
+            <ProfileLeft user={user} refreshDetails={refreshDetails} profileId = {profile._id} />
           </div>
           <div className="body_right">
             <ProfileRight setVisible={setVisible} eachUserProfile={eachUserProfile}/>

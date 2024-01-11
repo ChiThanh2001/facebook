@@ -3,7 +3,7 @@ import ProfilePicture from "../../components/profielPicture";
 import { useSelector } from "react-redux";
 import Friendship from "./Friendship";
 
-export default function ProfielPictureInfos({ profile, setRefresh, eachUserProfile }) {
+export default function ProfielPictureInfos({ profile, setRefresh, eachUserProfile, setOpenEditBox }) {
   const [show, setShow] = useState(false);
   const { user } = useSelector(state=> ({...state}))
 
@@ -42,7 +42,7 @@ export default function ProfielPictureInfos({ profile, setRefresh, eachUserProfi
           </div>
           <div className="gray_btn">
             <i className="edit_icon"></i>
-            <span>Edit profile</span>
+            <span onClick={()=>setOpenEditBox(true)}>Edit profile</span>
           </div>
         </div>) : <Friendship friendshipData={profile.friendship} profileId={profile._id} profile={profile}/>
       }
