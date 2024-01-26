@@ -123,19 +123,19 @@ exports.login = async (req, res) => {
     const user = await User.findOne({ email });
     if (!user) {
       return res.status(400).json({
-        message: "This account is not exist",
+        message: "Người dùng không tồn tại",
       });
     }
   
     const checkPassword = await bcrypt.compare(password, user.password);
     if (!checkPassword) {
       return res.status(400).json({
-        message: "The credential you provided is wrong",
+        message: "Sai tài khoản hoặc mật khẩu",
       });
     }
     if (!user.verified) {
       return res.status(400).json({
-        message: "This account is not activate yet!",
+        message: "Tài khoản chưa được kích hoạt",
       });
     }
     const token = generateToken({id: user._id.toString()}, '7d')

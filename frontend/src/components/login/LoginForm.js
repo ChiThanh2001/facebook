@@ -45,7 +45,8 @@ export default function LoginForm({setVisible}) {
       navigate('/')
     } catch (error) {
       setLoading(false)
-      setError("Sai tài khoản hoặc mật khẩu")
+      console.log(error)
+      setError(error.response.data.message)
     }
   }
 
