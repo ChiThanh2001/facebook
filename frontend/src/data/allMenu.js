@@ -2,7 +2,7 @@ export const menu = [
   {
     name: "Khuôn viên",
     icon: "campus",
-    description: "Một không gian duy nhất và độc đáo dành cho sinh viên trên Facebook.",
+    description: "Một không gian duy nhất và độc đáo dành cho sinh viên trên Tvibe.",
   },
   {
     name: "Sự kiện",
@@ -27,7 +27,7 @@ export const menu = [
   {
     name: "Trang",
     icon: "pages",
-    description: "Khám phá và kết nối với doanh nghiệp trên Facebook.",
+    description: "Khám phá và kết nối với doanh nghiệp trên Tvibe.",
   },
   {
     name: "Video Game",
@@ -57,12 +57,12 @@ export const menu = [
   {
     name: "Hoạt động quảng cáo gần đây",
     icon: "recent",
-    description: "Xem tất cả quảng cáo bạn tương tác trên Facebook.",
+    description: "Xem tất cả quảng cáo bạn tương tác trên Tvibe.",
   },
   {
     name: "Kí ức",
     icon: "memories",
-    description: "Duyệt qua ảnh cũ, video và bài đăng của bạn trên Facebook.",
+    description: "Duyệt qua ảnh cũ, video và bài đăng của bạn trên Tvibe.",
   },
   {
     name: "Đã lưu",

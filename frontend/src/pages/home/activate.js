@@ -51,7 +51,7 @@ export default function Activate() {
         error && <ActivateForm header={activateInfo.message} message={activateInfo.message} type='error' />
       }
       {
-        success && <ActivateForm header={activateInfo.message} message='Welcome To Facebook' type='success' />
+        success && <ActivateForm header={activateInfo.message} message='Welcome To Tvibe' type='success' />
       }
     </div>
   );

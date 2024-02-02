@@ -37,7 +37,7 @@ export default function UserMenu({ user }) {
             </div>
             <div className="mmenu_col">
               <div className="mmenu_span1">Give feedback</div>
-              <div className="mmenu_span2">Help us improve facebook</div>
+              <div className="mmenu_span2">Help us improve Tvibe</div>
             </div>
           </div> */}
           <div className="mmenu_splitter"></div>

@@ -9,6 +9,15 @@ const path = require("path");
 const http = require("http");
 const socketIO = require("socket.io");
 const Message = require("./models/Message");
+const User = require('./models/User')
+const Profile = require('./models/Profile')
+const Post = require('./models/Post')
+
+//delete all document
+// Message.deleteMany({}).then(result => console.log(result)).catch(err => console.log(err))
+// User.deleteMany({}).then(result => console.log(result)).catch(err => console.log(err))
+// Profile.deleteMany({}).then(result => console.log(result)).catch(err => console.log(err))
+// Post.deleteMany({}).then(result => console.log(result)).catch(err => console.log(err))
 
 dotenv.config();
 
