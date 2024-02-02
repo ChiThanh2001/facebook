@@ -34,7 +34,7 @@ export default function RightHome({ user }) {
           </div>
         </div>
         <div className="contacts_list">
-          {listOfFriend.length > 0 && listOfFriend.map((userFriend,index)=>{
+          {listOfFriend.length > 0 && listOfFriend[0] !== null && listOfFriend.map((userFriend,index)=>{
             return <Contact key={index} user={userFriend} />
           })}
         </div>
